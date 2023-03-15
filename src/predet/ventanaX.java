@@ -46,6 +46,11 @@ public class ventanaX extends javax.swing.JFrame {
         setResizable(false);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backgroundMouseClicked(evt);
+            }
+        });
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -149,6 +154,10 @@ public class ventanaX extends javax.swing.JFrame {
         int y = evt.getYOnScreen();
         this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_jPanel2MouseDragged
+
+    private void backgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backgroundMouseClicked
 
     /**
      * @param args the command line arguments
