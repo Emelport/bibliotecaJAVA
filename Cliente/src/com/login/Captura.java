@@ -40,7 +40,11 @@ public class Captura extends javax.swing.JFrame {
         GridDetalle = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        Add = new javax.swing.JLabel();
+        deOpt = new javax.swing.JPanel();
+        Add = new javax.swing.JPanel();
+        Add2 = new javax.swing.JLabel();
+        Del = new javax.swing.JPanel();
+        del = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -125,6 +129,9 @@ public class Captura extends javax.swing.JFrame {
 
         background.add(BtnArrastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 40));
 
+        GridDetalle.setBackground(new java.awt.Color(153, 153, 153));
+        GridDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -138,28 +145,82 @@ public class Captura extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        Add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/editar.png"))); // NOI18N
+        GridDetalle.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 740, 290));
 
-        javax.swing.GroupLayout GridDetalleLayout = new javax.swing.GroupLayout(GridDetalle);
-        GridDetalle.setLayout(GridDetalleLayout);
-        GridDetalleLayout.setHorizontalGroup(
-            GridDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GridDetalleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 763, javax.swing.GroupLayout.PREFERRED_SIZE))
+        Add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AddMouseExited(evt);
+            }
+        });
+
+        Add2.setBackground(new java.awt.Color(255, 255, 255));
+        Add2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/editar.png"))); // NOI18N
+        Add2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Add2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Add2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AddLayout = new javax.swing.GroupLayout(Add);
+        Add.setLayout(AddLayout);
+        AddLayout.setHorizontalGroup(
+            AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Add2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
         );
-        GridDetalleLayout.setVerticalGroup(
-            GridDetalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(GridDetalleLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(231, Short.MAX_VALUE))
+        AddLayout.setVerticalGroup(
+            AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
+            .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Add2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
         );
 
-        background.add(GridDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 740, 290));
+        deOpt.add(Add);
+
+        del.setBackground(new java.awt.Color(255, 255, 255));
+        del.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        del.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/trash (1).png"))); // NOI18N
+        del.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                delMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                delMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout DelLayout = new javax.swing.GroupLayout(Del);
+        Del.setLayout(DelLayout);
+        DelLayout.setHorizontalGroup(
+            DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 29, Short.MAX_VALUE)
+            .addGroup(DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(del, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+        );
+        DelLayout.setVerticalGroup(
+            DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 35, Short.MAX_VALUE)
+            .addGroup(DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DelLayout.createSequentialGroup()
+                    .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        deOpt.add(Del);
+
+        GridDetalle.add(deOpt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 290));
+
+        background.add(GridDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 770, 290));
 
         jLabel1.setText("jLabel1");
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, -1, -1));
@@ -240,6 +301,36 @@ public class Captura extends javax.swing.JFrame {
         this.setLocation(x-xMouse,y-yMouse);
     }//GEN-LAST:event_BtnArrastrarMouseDragged
 
+    private void Add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseEntered
+        // TODO add your handling code here:
+         Add.setBackground(Color.red);
+    }//GEN-LAST:event_Add2MouseEntered
+
+    private void delMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseEntered
+        // TODO add your handling code here:
+        Del.setBackground(Color.red);
+    }//GEN-LAST:event_delMouseEntered
+
+    private void AddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseEntered
+           // TODO add your handling code here:
+          
+    }//GEN-LAST:event_AddMouseEntered
+
+    private void Add2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseExited
+        // TODO add your handling code here:
+         Add.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_Add2MouseExited
+
+    private void AddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseExited
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_AddMouseExited
+
+    private void delMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseExited
+        // TODO add your handling code here:
+         Del.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_delMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -289,15 +380,19 @@ public class Captura extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Add;
+    private javax.swing.JPanel Add;
+    private javax.swing.JLabel Add2;
     private javax.swing.JPanel BtnArrastrar;
     private javax.swing.JPanel BtnSalir;
+    private javax.swing.JPanel Del;
     private javax.swing.JPanel GridDetalle;
     private javax.swing.JLabel Salir;
     private javax.swing.JPanel background;
     private java.awt.Checkbox checkbox1;
     private java.awt.Checkbox checkbox2;
     private java.awt.Checkbox checkbox3;
+    private javax.swing.JPanel deOpt;
+    private javax.swing.JLabel del;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
