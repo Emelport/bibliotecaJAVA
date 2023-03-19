@@ -60,11 +60,12 @@ public class Menu extends javax.swing.JFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Salir.setBackground(new java.awt.Color(255, 255, 255));
+        Salir.setBackground(new java.awt.Color(153, 0, 0));
         Salir.setForeground(new java.awt.Color(66, 61, 61));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("X");
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,16 +92,16 @@ public class Menu extends javax.swing.JFrame {
         );
         SalirLayout.setVerticalGroup(
             SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
             .addGroup(SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SalirLayout.createSequentialGroup()
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 4, Short.MAX_VALUE)))
         );
 
-        background.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+        background.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 30));
 
-        Barra.setBackground(new java.awt.Color(255, 255, 255));
+        Barra.setBackground(new java.awt.Color(153, 0, 0));
         Barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 BarraMouseDragged(evt);
@@ -125,7 +126,10 @@ public class Menu extends javax.swing.JFrame {
 
         background.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 30));
 
-        Menu.setBackground(new java.awt.Color(255, 255, 255));
+        Menu.setBackground(new java.awt.Color(153, 0, 0));
+
+        Altas.setBackground(new java.awt.Color(204, 204, 204));
+        Altas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel11.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -154,6 +158,9 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        Capturas.setBackground(new java.awt.Color(204, 204, 204));
+        Capturas.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Capturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Capturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CapturasMouseClicked(evt);
@@ -169,12 +176,20 @@ public class Menu extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/libro-magico.png"))); // NOI18N
         Capturas.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 130));
 
+        Consultas.setBackground(new java.awt.Color(204, 204, 204));
+        Consultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         jLabel10.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("CONSULTAS");
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/lupa.png"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout ConsultasLayout = new javax.swing.GroupLayout(Consultas);
         Consultas.setLayout(ConsultasLayout);
@@ -197,6 +212,9 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        UTILIDADES.setBackground(new java.awt.Color(204, 204, 204));
+        UTILIDADES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         jLabel12.setFont(new java.awt.Font("Roboto", 3, 18)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("CONSULTAS");
@@ -205,7 +223,9 @@ public class Menu extends javax.swing.JFrame {
         UTILIDADES.setLayout(UTILIDADESLayout);
         UTILIDADESLayout.setHorizontalGroup(
             UTILIDADESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(UTILIDADESLayout.createSequentialGroup()
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         UTILIDADESLayout.setVerticalGroup(
             UTILIDADESLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,6 +235,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("MENU");
 
@@ -229,9 +250,9 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(Altas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(99, 99, 99)
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Consultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(UTILIDADES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(172, Short.MAX_VALUE))
+                    .addComponent(UTILIDADES, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Consultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addGroup(MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -271,7 +292,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         // TODO add your handling code here:
-        Salir.setBackground(Color.white);
+        Salir.setBackground(new Color(153,0,0));
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
@@ -281,7 +302,12 @@ public class Menu extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+       biblio_funciones.cerrarVentana(this);
+        //Desocultar el login
+               // abrir el login de nuevo
+               Login login = new Login();
+               login.setVisible(true);
+               
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
@@ -297,9 +323,16 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_BarraMouseDragged
 
     private void CapturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CapturasMouseClicked
-        Captura captura = new Captura();
-        captura.show();
+        Menu_Capturas menuCap = new Menu_Capturas();
+        menuCap.show();
     }//GEN-LAST:event_CapturasMouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        // TODO add your handling code here:
+        Menu_Consultas menuCon = new Menu_Consultas();
+        menuCon.show();
+        
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments

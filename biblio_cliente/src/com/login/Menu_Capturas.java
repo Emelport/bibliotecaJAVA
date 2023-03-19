@@ -2,24 +2,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package predet;
+package com.login;
 
-
+import com.capturas.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
  * @author Elias
  */
-public class ventanaX extends javax.swing.JFrame {
+public class Menu_Capturas extends javax.swing.JFrame {
     
     public int xMouse=0; 
     public int yMouse=0; 
     /**
      * Creates new form login
      */
-    public ventanaX() {
+    public Menu_Capturas() {
         initComponents();
     }
 
@@ -34,9 +44,11 @@ public class ventanaX extends javax.swing.JFrame {
 
         jLabel6 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        Salir = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        Barra = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        Capturas = new javax.swing.JPanel();
 
         jLabel6.setText("jLabel6");
 
@@ -44,8 +56,13 @@ public class ventanaX extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBackground(new java.awt.Color(102, 0, 0));
         background.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backgroundMouseClicked(evt);
@@ -53,8 +70,8 @@ public class ventanaX extends javax.swing.JFrame {
         });
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setForeground(new java.awt.Color(66, 61, 61));
+        Salir.setBackground(new java.awt.Color(102, 0, 0));
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
@@ -72,47 +89,58 @@ public class ventanaX extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout SalirLayout = new javax.swing.GroupLayout(Salir);
+        Salir.setLayout(SalirLayout);
+        SalirLayout.setHorizontalGroup(
+            SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        SalirLayout.setVerticalGroup(
+            SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
 
-        background.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
+        background.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        Barra.setBackground(new java.awt.Color(102, 0, 0));
+        Barra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel2MouseDragged(evt);
+                BarraMouseDragged(evt);
             }
         });
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Barra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPanel2MousePressed(evt);
+                BarraMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("CAPTURAS");
+
+        javax.swing.GroupLayout BarraLayout = new javax.swing.GroupLayout(Barra);
+        Barra.setLayout(BarraLayout);
+        BarraLayout.setHorizontalGroup(
+            BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BarraLayout.createSequentialGroup()
+                .addGap(306, 306, 306)
+                .addComponent(jLabel1)
+                .addContainerGap(350, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+        BarraLayout.setVerticalGroup(
+            BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
-        background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 40));
+        background.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 40));
+        background.add(Capturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 720, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,35 +158,67 @@ public class ventanaX extends javax.swing.JFrame {
 
     private void jLabel7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseExited
         // TODO add your handling code here:
-        jPanel3.setBackground(Color.white);
+        Salir.setBackground(Color.white);
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
         // TODO add your handling code here:
-        jPanel3.setBackground(Color.red);
+        Salir.setBackground(Color.red);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        biblio_funciones.cerrarVentana(this);
+
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+    private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
 
         xMouse = evt.getX();
         yMouse = evt.getY();
-    }//GEN-LAST:event_jPanel2MousePressed
+    }//GEN-LAST:event_BarraMousePressed
 
-    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+    private void BarraMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
         this.setLocation(x-xMouse,y-yMouse);
-    }//GEN-LAST:event_jPanel2MouseDragged
+    }//GEN-LAST:event_BarraMouseDragged
 
     private void backgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backgroundMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_backgroundMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //Arreglo de objetos de tipo boton
+        JButton[] botones = new JButton[10];
+    
+        //por cada archivo en la carpeta de capturas se crea un boton y se agrega al arreglo
+        for (int i = 0; i < 10; i++) {
+            botones[i] = new JButton();
+            //se le asigna un 
+            botones[i].setPreferredSize(new Dimension(100, 100));
+            //se le asigna un texto
+            botones[i].setText("Boton " + i);
+            Capturas.add(botones[i]);
+
+        }
+        //se actualiza el panel
+        Capturas.updateUI();
+
+        //Evento al boton 0
+        botones[0].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Captura captura = new Captura();
+                captura.setVisible(true);
+                
+            }
+        });
+
+    }//GEN-LAST:event_formWindowOpened
+
+
+    
     /**
      * @param args the command line arguments
      */
@@ -176,14 +236,30 @@ public class ventanaX extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Capturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Capturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Capturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Menu_Capturas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -203,15 +279,17 @@ public class ventanaX extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new ventanaX().setVisible(true);
+            new Menu_Capturas().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Barra;
+    private javax.swing.JPanel Capturas;
+    private javax.swing.JPanel Salir;
     private javax.swing.JPanel background;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

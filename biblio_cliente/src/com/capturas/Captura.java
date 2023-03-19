@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.login;
+package com.capturas;
 
 
 import predet.*;
@@ -233,6 +233,12 @@ public class Captura extends javax.swing.JFrame {
         background.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 120, -1));
         background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 120, 10));
         background.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 120, 10));
+
+        jOptionPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jOptionPane1MouseClicked(evt);
+            }
+        });
         background.add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 170, 110));
 
         checkbox1.setLabel("checkbox1");
@@ -286,7 +292,7 @@ public class Captura extends javax.swing.JFrame {
 
     private void SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SalirMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        biblio_funciones.cerrarVentana(this);
     }//GEN-LAST:event_SalirMouseClicked
 
     private void BtnArrastrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnArrastrarMousePressed
@@ -330,6 +336,12 @@ public class Captura extends javax.swing.JFrame {
         // TODO add your handling code here:
          Del.setBackground(new Color(242,242,242));
     }//GEN-LAST:event_delMouseExited
+
+    private void jOptionPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOptionPane1MouseClicked
+        // TODO add your handling code here:
+        //generar reportes con la libreria i
+        
+    }//GEN-LAST:event_jOptionPane1MouseClicked
 
     /**
      * @param args the command line arguments
