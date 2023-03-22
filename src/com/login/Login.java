@@ -297,7 +297,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        Menu formMenu = new Menu();
+        Principal formMenu = new Principal();
         formMenu.show();
         biblio_funciones.cerrarVentana(this);
     }//GEN-LAST:event_jLabel5MouseClicked

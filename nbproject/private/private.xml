@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/biblio_cliente/src/com/login/login.java</file>
-            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/biblio_cliente/src/com/login/Menu.java</file>
-            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/biblio_cliente/src/com/login/biblio_funciones.java</file>
-            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/biblio_cliente/src/com/login/Menu_Capturas.java</file>
-            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/biblio_cliente/src/com/capturas/Captura.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/abcs/Libros.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/capturas/Compras.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/capturas/Ventas.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/abcs/Tarjetas.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/abcs/Clientes.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/login/Login.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/login/Principal.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/abcs/Proveedor.java</file>
+            <file>file:/C:/Users/Elias/Documents/bibliotecaJAVA/src/com/abcs/Autores.java</file>
         </group>
     </open-files>
 </project-private>
