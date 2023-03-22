@@ -26,8 +26,8 @@ public class Principal extends javax.swing.JFrame {
         this.setSize(getMaximumSize());
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        //Para 
+        
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Inicio = new javax.swing.JMenu();
+        Salir = new javax.swing.JMenuItem();
         Abcs = new javax.swing.JMenu();
         Clientes = new javax.swing.JMenuItem();
         Proveedores = new javax.swing.JMenuItem();
@@ -61,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setSize(getMaximumSize());
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -68,7 +70,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/logo_con_fondo-removebg-preview.png"))); // NOI18N
+        jLabel10.setToolTipText("");
+        jLabel10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jDesktopPane1.setLayer(jLabel10, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -77,22 +83,31 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(513, 513, 513)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(2667, Short.MAX_VALUE))
+                .addGap(621, 621, 621)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1304, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1306, Short.MAX_VALUE))
+                .addGap(285, 285, 285)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1431, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jMenuBar1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Inicio.setText("Inicio");
+
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        Inicio.add(Salir);
+
         jMenuBar1.add(Inicio);
 
         Abcs.setText("Abcs");
@@ -141,7 +156,7 @@ public class Principal extends javax.swing.JFrame {
 
         Capturas.setText("Capturas");
 
-        Ventas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Ventas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
         Ventas.setText("Ventas");
         Ventas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,7 +170,7 @@ public class Principal extends javax.swing.JFrame {
         });
         Capturas.add(Ventas);
 
-        Compras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Compras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_MASK));
         Compras.setText("Compras");
         Compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,13 +215,13 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29050, Short.MAX_VALUE))
+                .addGap(0, 29373, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 30867, Short.MAX_VALUE))
+                .addGap(0, 29075, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,9 +266,6 @@ public class Principal extends javax.swing.JFrame {
                 Inicio.setSelected(true);
                 Inicio.requestFocus();
             }
-            
-
-           
     }//GEN-LAST:event_formKeyPressed
 
     private void ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprasActionPerformed
@@ -301,6 +313,11 @@ public class Principal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
@@ -376,6 +393,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Libros;
     private javax.swing.JMenu Limpiar;
     private javax.swing.JMenuItem Proveedores;
+    private javax.swing.JMenuItem Salir;
     private javax.swing.JMenuItem Tarjetas;
     private javax.swing.JMenuItem Ventas;
     private javax.swing.JDesktopPane jDesktopPane1;

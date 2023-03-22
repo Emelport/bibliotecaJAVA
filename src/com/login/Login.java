@@ -19,10 +19,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-        Toolkit miPantalla = Toolkit.getDefaultToolkit();
-        //asignarle un icono a la ventana
-        Image miIcono = miPantalla.getImage("src/com/imgs/logo.png");
-        setIconImage(miIcono);
+       
         
     }
 
@@ -69,7 +66,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         jLabel2.setText("INICIAR SESION");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, -1, -1));
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
@@ -114,7 +111,7 @@ public class Login extends javax.swing.JFrame {
         background.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 290, 20));
 
         entrar.setBackground(new java.awt.Color(102, 102, 102));
-        entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(239, 237, 237));
@@ -299,11 +296,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         Principal formMenu = new Principal();
         formMenu.show();
-        biblio_funciones.cerrarVentana(this);
+        this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        //salir
+        System.exit(0);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**

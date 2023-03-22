@@ -62,26 +62,7 @@ public class biblio_funciones {
         //ejemplo de uso: mensaje("Mensaje de prueba", "Titulo de prueba", 1);
     }
 
-    //Cuando se cierra la ventana de login, se cierra el programa
-    public static void cerrar(){
-        System.exit(0);
-    }
-
-    //cuando se cierra alguna ventana, se cierra la ventana actual
-    public static void cerrarVentana(javax.swing.JFrame ventana){
-        ventana.dispose();
-    }
-
-    //Ocultar la ventana actual
-    public static void ocultarVentana(javax.swing.JFrame ventana){
-        ventana.setVisible(false);
-    }
-
-    //Mostrar la ventana actual
-    public static void mostrarVentana(javax.swing.JFrame ventana){
-        ventana.setVisible(true);
-    }
-
+  
 
     // enviar un mensaje al socket del servidor
     public static void enviarInstruccion(Socket socket, String mensaje){
@@ -93,8 +74,32 @@ public class biblio_funciones {
         }
     }
 
+    //Peticion Rest al servidor
+    public static String peticionRest(String url, String metodo, String datos){
+        String respuesta = "";
+        try {
+            java.net.URL urlObj = new java.net.URL(url);
+            java.net.HttpURLConnection con = (java.net.HttpURLConnection) urlObj.openConnection();
+            con.setRequestMethod(metodo);
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setDoOutput(true);
+            if(datos != null){
+                java.io.OutputStream os = con.getOutputStream();
+                byte[] input = datos.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(con.getInputStream(), "utf-8"));
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                respuesta += responseLine.trim();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return respuesta;
+    }
 
-
-
+    
+    
 
 }
