@@ -40,22 +40,7 @@ public class biblio_funciones {
         return respuesta;
     }
 
-    // Desencriptar contraseña con MD5
-    public static String desencriptar(String password){
-        String passwordDesencriptado = null;
-        try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(password.getBytes());
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-            }
-            passwordDesencriptado = sb.toString();
-        } catch (java.security.NoSuchAlgorithmException e) {
-        }
-        return passwordDesencriptado;
-    }
-
+   
     //MessageBox personalizado con un mensaje, un titulo y un tipo de mensaje
     public static void mensaje(String mensaje, String titulo, int tipo){
         javax.swing.JOptionPane.showMessageDialog(null, mensaje, titulo, tipo);
@@ -63,39 +48,9 @@ public class biblio_funciones {
     }
 
   
-
-    // enviar un mensaje al socket del servidor
-    public static void enviarInstruccion(Socket socket, String mensaje){
-        try {
-            ObjectOutputStream salida = new ObjectOutputStream(socket.getOutputStream());
-            salida.writeObject(mensaje);
-        } catch (IOException ex) {
-            Logger.getLogger(biblio_funciones.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    //Peticion Rest al servidor
-    public static String peticionRest(String url, String metodo, String datos){
-        String respuesta = "";
-        try {
-            java.net.URL urlObj = new java.net.URL(url);
-            java.net.HttpURLConnection con = (java.net.HttpURLConnection) urlObj.openConnection();
-            con.setRequestMethod(metodo);
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setDoOutput(true);
-            if(datos != null){
-                java.io.OutputStream os = con.getOutputStream();
-                byte[] input = datos.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-            java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(con.getInputStream(), "utf-8"));
-            String responseLine = null;
-            while ((responseLine = br.readLine()) != null) {
-                respuesta += responseLine.trim();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    //MessageBox personalizado con un mensaje, un titulo y 2 botones de respuesta
+    public static int mensajeDecision(String mensaje, String titulo, String boton1, String boton2){
+        int respuesta = javax.swing.JOptionPane.showConfirmDialog(null, mensaje, titulo, 0, 3, null);
         return respuesta;
     }
 

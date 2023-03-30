@@ -60,11 +60,16 @@ public class Clientes extends javax.swing.JInternalFrame {
         txt_email = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txt_id = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         btn_anadir = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+
+        setBorder(null);
+        setForeground(new java.awt.Color(255, 204, 204));
 
         background.setBackground(new java.awt.Color(153, 0, 102));
         background.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,7 +91,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Email");
 
-        txt_nombre.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_nombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_nombre.setBorder(null);
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -99,11 +104,14 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("Nombre");
 
+        txt_direccion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_direccion.setBorder(null);
 
+        txt_fecha.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_fecha.setBorder(null);
         txt_fecha.setEnabled(false);
 
+        txt_email.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_email.setBorder(null);
 
         jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -111,7 +119,19 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Telefono");
 
+        txt_telefono.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_telefono.setBorder(null);
+
+        jLabel8.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("ID");
+
+        txt_id.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_id.setBorder(null);
+        txt_id.setEnabled(false);
+
+        jButton4.setText("Nuevo");
 
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
@@ -120,25 +140,40 @@ public class Clientes extends javax.swing.JInternalFrame {
             .addGroup(DatosLayout.createSequentialGroup()
                 .addGap(102, 102, 102)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addGap(55, 55, 55)
-                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(55, 55, 55)
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(55, 55, 55)
+                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(139, 139, 139)
+                        .addComponent(jButton4)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DatosLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)))
+                    .addComponent(jButton4))
+                .addGap(18, 18, 18)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -172,27 +207,22 @@ public class Clientes extends javax.swing.JInternalFrame {
         background.add(btn_anadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, -1, -1));
 
         jButton2.setText("Eliminar");
-        background.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
+        background.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
         jButton3.setText("Actualizar");
-        background.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, -1, -1));
+        background.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("CLIENTES");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 135, 20));
-
-        jButton4.setText("Nuevo");
-        background.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 135, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 548, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,9 +269,11 @@ public class Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_fecha;
+    private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables

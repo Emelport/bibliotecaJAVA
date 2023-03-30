@@ -18,11 +18,8 @@ public class Login extends javax.swing.JFrame {
      * Creates new form login
      */
     public Login() {
-        initComponents();
-       
-        
+        initComponents();   
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,12 +33,12 @@ public class Login extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        user_Entry = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        psw_Entry = new javax.swing.JPasswordField();
         entrar = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         salir = new javax.swing.JPanel();
@@ -68,21 +65,21 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("INICIAR SESION");
         background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Ingrese su Nombre de Usuario.");
-        jTextField1.setBorder(null);
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        user_Entry.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
+        user_Entry.setForeground(new java.awt.Color(204, 204, 204));
+        user_Entry.setText("Ingrese su Nombre de Usuario.");
+        user_Entry.setBorder(null);
+        user_Entry.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                user_EntryMouseClicked(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        user_Entry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                user_EntryActionPerformed(evt);
             }
         });
-        background.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 290, 20));
+        background.add(user_Entry, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 290, 20));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         background.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 290, 30));
@@ -100,15 +97,15 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 290, 30));
 
-        jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        psw_Entry.setForeground(new java.awt.Color(204, 204, 204));
+        psw_Entry.setText("jPasswordField1");
+        psw_Entry.setBorder(null);
+        psw_Entry.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseClicked(evt);
+                psw_EntryMouseClicked(evt);
             }
         });
-        background.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 290, 20));
+        background.add(psw_Entry, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 290, 20));
 
         entrar.setBackground(new java.awt.Color(102, 102, 102));
         entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -196,14 +193,14 @@ public class Login extends javax.swing.JFrame {
         Barra.setLayout(BarraLayout);
         BarraLayout.setHorizontalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGap(0, 960, Short.MAX_VALUE)
         );
         BarraLayout.setVerticalGroup(
             BarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        background.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 40));
+        background.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 40));
 
         FondoCompl.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -244,7 +241,6 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BarraMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraMousePressed
-
         xMouse = evt.getX(); 
         yMouse = evt.getY();
     }//GEN-LAST:event_BarraMousePressed
@@ -280,31 +276,49 @@ public class Login extends javax.swing.JFrame {
         entrar.setBackground(new Color(204,0,51));
     }//GEN-LAST:event_jLabel5MouseExited
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+    private void user_EntryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_user_EntryMouseClicked
         // TODO add your handling code here:
-        jTextField1.setText("");
-        jTextField1.setForeground(Color.black);
-    }//GEN-LAST:event_jTextField1MouseClicked
+        user_Entry.setText("");
+        user_Entry.setForeground(Color.black);
+    }//GEN-LAST:event_user_EntryMouseClicked
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+    private void psw_EntryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_psw_EntryMouseClicked
         // TODO add your handling code here:
-        jPasswordField1.setText("");
-        jPasswordField1.setForeground(Color.black);
-    }//GEN-LAST:event_jPasswordField1MouseClicked
+        psw_Entry.setText("");
+        psw_Entry.setForeground(Color.black);
+    }//GEN-LAST:event_psw_EntryMouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        Principal formMenu = new Principal();
-        formMenu.show();
-        this.dispose();
+        String user = user_Entry.getText();
+        String psw = String.valueOf(psw_Entry.getPassword());
+        
+        Boolean res=login(user,psw);
+        if(res) {
+            biblio_funciones.mensaje("Bienvenido, " + user, "Acceso Correcto", 1);
+            Principal formMenu = new Principal();
+            formMenu.show();
+            this.dispose();
+        }
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void user_EntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_EntryActionPerformed
         // TODO add your handling code here:
         //salir
         System.exit(0);
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
+    }//GEN-LAST:event_user_EntryActionPerformed
+    
+    public Boolean login(String user,String psw){
+       
+        if (user.equals("elias") && psw.equals("elias2001")){
+            return true;
+        }
+        else{
+            biblio_funciones.mensaje("Usuario y/o Contraseña incorrectos", "ERROR", 2);
+        }
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -353,10 +367,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField psw_Entry;
     private javax.swing.JPanel salir;
+    private javax.swing.JTextField user_Entry;
     // End of variables declaration//GEN-END:variables
 }
