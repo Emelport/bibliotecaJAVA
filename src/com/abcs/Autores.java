@@ -4,7 +4,18 @@
  */
 package com.abcs;
 
+import com.login.biblio_funciones;
 import java.awt.Color;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
+import java.net.http.HttpRequest.BodyPublishers;
+import com.funciones.Api;
 
 /**
  *
@@ -24,7 +35,6 @@ public class Autores extends javax.swing.JInternalFrame {
         this.setResizable(true);
         //Poner el titulo
         this.setTitle("Clientes");
-
     }
 
     /**
@@ -39,12 +49,11 @@ public class Autores extends javax.swing.JInternalFrame {
         background = new javax.swing.JPanel();
         Datos = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txt_autor_id = new javax.swing.JTextField();
+        btn_anadir = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txt_autor_nombre = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -62,19 +71,32 @@ public class Autores extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID");
 
-        jTextField2.setBorder(null);
+        txt_autor_id.setBorder(null);
 
-        jButton1.setText("Añadir");
+        btn_anadir.setText("Añadir");
+        btn_anadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_anadirActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
-
-        jButton3.setText("Actualizar");
+        btn_modificar.setText("Actualizar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre");
 
-        jTextField4.setBorder(null);
+        txt_autor_nombre.setBorder(null);
+        txt_autor_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_autor_nombreActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Nuevo");
 
@@ -93,14 +115,12 @@ public class Autores extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(DatosLayout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 105, Short.MAX_VALUE))
+                                .addComponent(btn_anadir)
+                                .addGap(97, 97, 97)
+                                .addComponent(btn_modificar))
+                            .addComponent(txt_autor_id, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_autor_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 103, Short.MAX_VALUE))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,17 +128,16 @@ public class Autores extends javax.swing.JInternalFrame {
                 .addComponent(jButton4)
                 .addGap(17, 17, 17)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_autor_id, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(7, 7, 7)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_autor_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btn_anadir)
+                    .addComponent(btn_modificar))
                 .addGap(31, 31, 31))
         );
 
@@ -138,7 +157,7 @@ public class Autores extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
         );
 
         pack();
@@ -148,18 +167,48 @@ public class Autores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_backgroundMouseClicked
 
+    private void btn_anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_anadirActionPerformed
+        String autor_nombre = txt_autor_nombre.getText();
+        String json = "{\"nombre\": \"" + autor_nombre + "\" }";
+        String ruta = "/insertar_autor";
+        Api a = new Api();
+        a.insertar(json, ruta);
+    }//GEN-LAST:event_btn_anadirActionPerformed
+
+    private void txt_autor_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_autor_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_autor_nombreActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        String autor_nombre = txt_autor_nombre.getText();
+        int autor_id;
+        if(txt_autor_id.getText().isEmpty()){
+            autor_id = 0;
+           
+        }else{
+         autor_id = Integer.parseInt(txt_autor_id.getText());   
+        }
+        String ruta = "/modificar_autor";
+        String json = "{"
+            + "\"nombre\": \"" + autor_nombre + "\","
+            + "\"id_autor\": \"" + autor_id + "\""
+            + "}";
+        Api a = new Api();
+        a.modificar(json, ruta);
+
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Datos;
     private javax.swing.JPanel background;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn_anadir;
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txt_autor_id;
+    private javax.swing.JTextField txt_autor_nombre;
     // End of variables declaration//GEN-END:variables
 }
