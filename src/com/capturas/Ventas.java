@@ -66,7 +66,7 @@ public class Ventas extends javax.swing.JInternalFrame {
             }
         });
 
-        background.setBackground(java.awt.SystemColor.textHighlight);
+        background.setBackground(new java.awt.Color(0, 102, 153));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         GridDetalle.setBackground(new java.awt.Color(153, 153, 153));

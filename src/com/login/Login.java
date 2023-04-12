@@ -293,7 +293,7 @@ public class Login extends javax.swing.JFrame {
         String user = user_Entry.getText();
         String psw = String.valueOf(psw_Entry.getPassword());
         
-        Boolean res=login(user,psw);
+        Boolean res= login(user,psw);
         if(res) {
             biblio_funciones.mensaje("Bienvenido, " + user, "Acceso Correcto", 1);
             Principal formMenu = new Principal();
@@ -310,7 +310,7 @@ public class Login extends javax.swing.JFrame {
     
     public Boolean login(String user,String psw){
        
-        if (user.equals("elias") && psw.equals("elias2001")){
+        if (user.equals("osman") && psw.equals("osman2002")){
             return true;
         }
         else{

@@ -19,12 +19,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="background" alignment="1" max="32767" attributes="0"/>
+          <Component id="background" alignment="1" pref="615" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="background" min="-2" pref="601" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="background" pref="618" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -51,7 +54,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="40" width="580" height="480"/>
+              <AbsoluteConstraints x="10" y="40" width="580" height="540"/>
             </Constraint>
           </Constraints>
 
@@ -80,29 +83,31 @@
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField3" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                               <Component id="jTextField2" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
                               <Component id="jTextField4" alignment="0" pref="198" max="32767" attributes="0"/>
                               <Component id="jTextField5" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                               <Component id="jTextField6" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                               <Component id="jTextField7" max="32767" attributes="0"/>
+                              <Component id="jTextField1" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField10" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField11" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField12" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField13" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jTextField12" alignment="0" pref="87" max="32767" attributes="0"/>
+                              <Component id="jTextField10" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextField11" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextField8" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="131" max="32767" attributes="0"/>
+                      <EmptySpace pref="121" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -171,7 +176,7 @@
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -384,7 +389,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="560" width="-1" height="-1"/>
+              <AbsoluteConstraints x="80" y="590" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -394,7 +399,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="240" y="560" width="-1" height="-1"/>
+              <AbsoluteConstraints x="260" y="590" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -404,7 +409,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="420" y="560" width="-1" height="-1"/>
+              <AbsoluteConstraints x="440" y="590" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -71,7 +71,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         setBorder(null);
         setForeground(new java.awt.Color(255, 204, 204));
 
-        background.setBackground(new java.awt.Color(153, 0, 102));
+        background.setBackground(new java.awt.Color(0, 102, 153));
         background.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backgroundMouseClicked(evt);
@@ -79,7 +79,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         });
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Datos.setBackground(new java.awt.Color(153, 0, 102));
+        Datos.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +129,6 @@ public class Clientes extends javax.swing.JInternalFrame {
 
         txt_id.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txt_id.setBorder(null);
-        txt_id.setEnabled(false);
 
         jButton4.setText("Nuevo");
 
@@ -157,11 +156,11 @@ public class Clientes extends javax.swing.JInternalFrame {
                             .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(55, 55, 55)
-                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(139, 139, 139)
+                        .addGap(40, 40, 40)
+                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100)
                         .addComponent(jButton4)))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

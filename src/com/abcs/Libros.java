@@ -162,25 +162,26 @@ public class Libros extends javax.swing.JInternalFrame {
                 .addGap(60, 60, 60)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField7))
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                        .addComponent(jTextField7)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                        .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DatosLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(19, 19, 19)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -234,10 +235,10 @@ public class Libros extends javax.swing.JInternalFrame {
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        background.add(Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 580, 480));
+        background.add(Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 580, 540));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -249,23 +250,25 @@ public class Libros extends javax.swing.JInternalFrame {
         background.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
         jButton1.setText("Añadir");
-        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, -1, -1));
+        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 590, -1, -1));
 
         jButton2.setText("Eliminar");
-        background.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, -1, -1));
+        background.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, -1, -1));
 
         jButton3.setText("Actualizar");
-        background.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, -1, -1));
+        background.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 590, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();

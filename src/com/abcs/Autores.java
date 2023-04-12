@@ -57,7 +57,7 @@ public class Autores extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        background.setBackground(new java.awt.Color(153, 0, 102));
+        background.setBackground(new java.awt.Color(0, 102, 153));
         background.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backgroundMouseClicked(evt);
@@ -65,7 +65,7 @@ public class Autores extends javax.swing.JInternalFrame {
         });
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Datos.setBackground(new java.awt.Color(153, 0, 102));
+        Datos.setBackground(new java.awt.Color(0, 102, 153));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
