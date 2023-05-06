@@ -93,6 +93,8 @@ public class c_Libros extends javax.swing.JInternalFrame {
         jLabel1.setText("FECHA/RANGO DE FECHAS");
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
+        jTextField2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jTextField2.setToolTipText("");
         jTextField2.setBorder(null);
         background.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 830, 30));
 

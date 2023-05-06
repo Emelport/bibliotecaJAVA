@@ -4,6 +4,9 @@
  */
 package com.login;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import com.abcs.*;
 import com.capturas.*;
 import com.consultas.c_Rentas;
@@ -26,8 +29,6 @@ public class Principal extends javax.swing.JFrame {
         this.setSize(getMaximumSize());
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +40,16 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jDesktopPane1 = new javax.swing.JDesktopPane(){
+            ImageIcon icon = new ImageIcon(getClass().getResource("../imgs/fondo.jpg"));
+            Image image = icon.getImage();
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Inicio = new javax.swing.JMenu();
@@ -58,9 +68,14 @@ public class Principal extends javax.swing.JFrame {
         Consulta1 = new javax.swing.JMenuItem();
         Consulta2 = new javax.swing.JMenuItem();
         Consulta3 = new javax.swing.JMenuItem();
-        Limpiar = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenu2.setText("File");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -89,19 +104,26 @@ public class Principal extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 1584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1067, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1364, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 153));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jMenuBar1.setForeground(new java.awt.Color(0, 51, 102));
         jMenuBar1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jMenuBar1.setSelectionModel(null);
 
-        Inicio.setText("Inicio");
+        Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/users-icon.png"))); // NOI18N
+        Inicio.setText("Usuarios");
+        Inicio.setToolTipText("");
+        Inicio.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         jMenuItem2.setText("Cerrar Sesion");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +143,10 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Inicio);
 
-        Abcs.setText("Abcs");
+        Abcs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/altas-icon.png"))); // NOI18N
+        Abcs.setText("Archivos");
+        Abcs.setToolTipText("");
+        Abcs.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Clientes.setText("Clientes");
         Clientes.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +190,10 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Abcs);
 
-        Capturas.setText("Capturas");
+        Capturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/capturas-icon.png"))); // NOI18N
+        Capturas.setText("  Capturas");
+        Capturas.setToolTipText("");
+        Capturas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Ventas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_DOWN_MASK));
         Ventas.setText("Ventas");
@@ -192,7 +220,10 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Capturas);
 
-        Consultas.setText("Consultas");
+        Consultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/reportes-icon.png"))); // NOI18N
+        Consultas.setText("Reportes");
+        Consultas.setToolTipText("");
+        Consultas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Consulta1.setText("Rentas");
         Consulta1.addActionListener(new java.awt.event.ActionListener() {
@@ -210,14 +241,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(Consultas);
 
-        Limpiar.setText("Limpiar todo");
-        Limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LimpiarActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(Limpiar);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -226,14 +249,11 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 29373, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29069, Short.MAX_VALUE))
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -325,18 +345,9 @@ public class Principal extends javax.swing.JFrame {
         inicializarFrame(v);
     }//GEN-LAST:event_TarjetasActionPerformed
 
-    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        // TODO add your handling code here:
-        //Cierra todos los frames abiertos
-        JInternalFrame[] frames = jDesktopPane1.getAllFrames();
-        for (JInternalFrame frame : frames) {
-            frame.dispose();
-        }
-        
-    }//GEN-LAST:event_LimpiarActionPerformed
-
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
+        //DEBERIA DE DEJAR LA SESION INICIADA
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
@@ -427,14 +438,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenu Inicio;
     private javax.swing.JMenuItem Libros;
-    private javax.swing.JMenu Limpiar;
     private javax.swing.JMenuItem Proveedores;
     private javax.swing.JMenuItem Salir;
     private javax.swing.JMenuItem Tarjetas;
     private javax.swing.JMenuItem Ventas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables

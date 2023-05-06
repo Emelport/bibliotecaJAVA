@@ -29,8 +29,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         user_Entry = new javax.swing.JTextField();
@@ -44,13 +42,9 @@ public class Login extends javax.swing.JFrame {
         salir = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         Barra = new javax.swing.JPanel();
-        FondoCompl = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-
-        jLabel6.setText("jLabel6");
-
-        jLabel9.setText("jLabel9");
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -62,13 +56,21 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
-        jLabel2.setText("INICIAR SESION");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/Free_Sample_By_Wix.jpg"))); // NOI18N
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 210, -1, -1));
 
         user_Entry.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         user_Entry.setForeground(new java.awt.Color(204, 204, 204));
         user_Entry.setText("Ingrese su Nombre de Usuario.");
         user_Entry.setBorder(null);
+        user_Entry.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                user_EntryFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                user_EntryFocusLost(evt);
+            }
+        });
         user_Entry.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 user_EntryMouseClicked(evt);
@@ -79,33 +81,51 @@ public class Login extends javax.swing.JFrame {
                 user_EntryActionPerformed(evt);
             }
         });
-        background.add(user_Entry, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 290, 20));
+        background.add(user_Entry, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 290, 20));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 290, 30));
+        background.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 290, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("USUARIO");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel4.setText("CONTRASEÑA");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 290, 30));
+        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 290, 30));
 
         psw_Entry.setForeground(new java.awt.Color(204, 204, 204));
         psw_Entry.setText("jPasswordField1");
         psw_Entry.setBorder(null);
+        psw_Entry.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                psw_EntryFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                psw_EntryFocusLost(evt);
+            }
+        });
         psw_Entry.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 psw_EntryMouseClicked(evt);
             }
         });
-        background.add(psw_Entry, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 290, 20));
+        psw_Entry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                psw_EntryActionPerformed(evt);
+            }
+        });
+        psw_Entry.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                psw_EntryKeyPressed(evt);
+            }
+        });
+        background.add(psw_Entry, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 290, 20));
 
         entrar.setBackground(new java.awt.Color(102, 102, 102));
         entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -138,7 +158,7 @@ public class Login extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        background.add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, -1, 40));
+        background.add(entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 40));
 
         salir.setBackground(new java.awt.Color(255, 255, 255));
         salir.setForeground(new java.awt.Color(66, 61, 61));
@@ -202,35 +222,25 @@ public class Login extends javax.swing.JFrame {
 
         background.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 40));
 
-        FondoCompl.setBackground(new java.awt.Color(153, 0, 0));
-
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/books-1204029_960_720.jpg"))); // NOI18N
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 570, 610));
 
-        javax.swing.GroupLayout FondoComplLayout = new javax.swing.GroupLayout(FondoCompl);
-        FondoCompl.setLayout(FondoComplLayout);
-        FondoComplLayout.setHorizontalGroup(
-            FondoComplLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoComplLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        FondoComplLayout.setVerticalGroup(
-            FondoComplLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoComplLayout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
+        jLabel6.setText("CoreBook");
+        jLabel6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 250, 70));
 
-        background.add(FondoCompl, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 570, 550));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/Free_Sample_By_Wix.jpg"))); // NOI18N
-        background.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 190, 110));
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabel9.setText("INICIAR SESION");
+        background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,6 +317,52 @@ public class Login extends javax.swing.JFrame {
         //salir
         System.exit(0);
     }//GEN-LAST:event_user_EntryActionPerformed
+
+    private void psw_EntryFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_psw_EntryFocusGained
+        // TODO add your handling code here:
+        psw_Entry.setText("");
+        psw_Entry.setForeground(Color.black);
+    }//GEN-LAST:event_psw_EntryFocusGained
+
+    private void psw_EntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psw_EntryActionPerformed
+        //si se presiona enter
+        String user = user_Entry.getText();
+        
+        String psw = String.valueOf(psw_Entry.getPassword());
+
+        Boolean res= login(user,psw);
+        if(res) {
+            biblio_funciones.mensaje("Bienvenido, " + user, "Acceso Correcto", 1);
+            Principal formMenu = new Principal();
+            formMenu.show();
+            this.dispose();
+        }
+
+        
+
+    }//GEN-LAST:event_psw_EntryActionPerformed
+
+    private void psw_EntryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_psw_EntryFocusLost
+        // TODO add your handling code here:
+        psw_Entry.setText("****************");
+        psw_Entry.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_psw_EntryFocusLost
+
+    private void user_EntryFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_user_EntryFocusGained
+        user_Entry.setText("");
+        user_Entry.setForeground(Color.black);        // TODO add your handling code here:
+    }//GEN-LAST:event_user_EntryFocusGained
+
+    private void user_EntryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_user_EntryFocusLost
+        // TODO add your handling code here:
+        user_Entry.setForeground(new Color(204,204,204));
+    }//GEN-LAST:event_user_EntryFocusLost
+
+    private void psw_EntryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psw_EntryKeyPressed
+        // TODO add your handling code here:
+          // TODO add your handling code here:
+       
+    }//GEN-LAST:event_psw_EntryKeyPressed
     
     public Boolean login(String user,String psw){
        
@@ -355,11 +411,9 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Barra;
-    private javax.swing.JPanel FondoCompl;
     private javax.swing.JPanel background;
     private javax.swing.JPanel entrar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

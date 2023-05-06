@@ -104,6 +104,11 @@ public class c_Rentas extends javax.swing.JInternalFrame {
 
         button1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         button1.setLabel("Generar Reporte");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
         background.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 90, 190, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,6 +134,24 @@ public class c_Rentas extends javax.swing.JInternalFrame {
             biblio_funciones.mensaje("Desea Salir?", "SALIR", 2);
         }
     }//GEN-LAST:event_formKeyPressed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+      /*  try {
+            // Cargar el archivo del reporte
+            String rutaReporte = "ruta/al/reporte.jrxml"; // Reemplaza con la ruta de tu reporte
+            JasperReport jasperReport = JasperCompileManager.compileReport(rutaReporte);
+            
+            // Crear una fuente de datos para el reporte (opcional)
+            // Si tu reporte no necesita una fuente de datos, puedes omitir este paso
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JREmptyDataSource());
+            
+            // Mostrar el reporte en un visor (opcional)
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }*/
+    }//GEN-LAST:event_button1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
