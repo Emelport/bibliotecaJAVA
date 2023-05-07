@@ -22,13 +22,18 @@ public class Compras extends javax.swing.JInternalFrame {
      */
     public Compras() {
         initComponents();
-          this.setClosable(true);
+        this.setClosable(true);
         this.setIconifiable(true);
         this.setMaximizable(true);
         //Poder mover la ventana
         this.setResizable(true);
         //Poner el titulo
         this.setTitle("Compras");
+       
+        //Poner un combo box en la tabla
+        crearCombo combo = new crearCombo(jTable1, true);
+        jTable1.getColumnModel().getColumn(0).setCellEditor(combo); //PROVEEDORES
+        jTable1.getColumnModel().getColumn(1).setCellEditor(combo); //LIBROS
 
     }
 
@@ -41,116 +46,54 @@ public class Compras extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button1 = new java.awt.Button();
         background = new javax.swing.JPanel();
-        GridDetalle = new javax.swing.JPanel();
-        deOpt = new javax.swing.JPanel();
-        Add = new javax.swing.JPanel();
-        Add2 = new javax.swing.JLabel();
-        Del = new javax.swing.JPanel();
-        del = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jOptionPane1 = new javax.swing.JOptionPane();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        button1 = new java.awt.Button();
+        txt_fecha = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
+
+        button1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        button1.setLabel("PAGAR");
 
         background.setBackground(new java.awt.Color(0, 102, 153));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        GridDetalle.setBackground(new java.awt.Color(153, 153, 153));
-        GridDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        Add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AddMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AddMouseExited(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel4.setText("Subtotal:");
 
-        Add2.setBackground(new java.awt.Color(255, 255, 255));
-        Add2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Add2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/editar.png"))); // NOI18N
-        Add2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel3.setText("Total:");
+
+        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextField5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Add2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                Add2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Add2MouseExited(evt);
+                jTextField5MouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout AddLayout = new javax.swing.GroupLayout(Add);
-        Add.setLayout(AddLayout);
-        AddLayout.setHorizontalGroup(
-            AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-            .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Add2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-        );
-        AddLayout.setVerticalGroup(
-            AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-            .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Add2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
-        );
-
-        deOpt.add(Add);
-
-        del.setBackground(new java.awt.Color(255, 255, 255));
-        del.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        del.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/trash (1).png"))); // NOI18N
-        del.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                delMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                delMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                delMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout DelLayout = new javax.swing.GroupLayout(Del);
-        Del.setLayout(DelLayout);
-        DelLayout.setHorizontalGroup(
-            DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
-            .addGroup(DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(del, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-        );
-        DelLayout.setVerticalGroup(
-            DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
-            .addGroup(DelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DelLayout.createSequentialGroup()
-                    .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        deOpt.add(Del);
-
-        GridDetalle.add(deOpt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 370));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
@@ -160,28 +103,27 @@ public class Compras extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(jTable1);
 
-        GridDetalle.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 340));
-
-        background.add(GridDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 1140, 340));
-
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ID");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+        jLabel1.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel1.setText("ID:");
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Fecha");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
-        background.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 120, -1));
-        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, 120, 10));
+        jLabel2.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel2.setText("Fecha:");
 
         jOptionPane1.setMessage("Imprimir Ticket"
         );
@@ -191,151 +133,127 @@ public class Compras extends javax.swing.JInternalFrame {
                 jOptionPane1MouseClicked(evt);
             }
         });
-        background.add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 30, 170, 110));
 
-        jTextField2.setBorder(null);
-        background.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 120, 20));
+        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField3.setBorder(null);
-        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField3MouseClicked(evt);
+        txt_fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fechaActionPerformed(evt);
             }
         });
-        background.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 120, 20));
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Total");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, -1, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(480, 480, 480))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 31, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Subtotal");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 630, -1, -1));
-
-        jTextField4.setBorder(null);
-        background.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 630, 120, 20));
-
-        jTextField5.setBorder(null);
-        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField5MouseClicked(evt);
-            }
-        });
-        background.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 660, 120, 20));
-
-        button1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        button1.setLabel("PAGAR");
-        background.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 610, 190, 70));
+        background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1330, 600));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("COMPRAS");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1270, 50));
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1356, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 1330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseClicked
-        // TODO add your handling code here:
-        //Agregar un renglon a la Jtable
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.addRow(new Object[]{"HarryPotter","2","100","200","200"});
-        //Poner el puntero en el campo nuevo
-        jTable1.changeSelection(jTable1.getRowCount()-1, 0, false, false);
-
-    }//GEN-LAST:event_Add2MouseClicked
-
-    private void Add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseEntered
-        // TODO add your handling code here:
-        Add.setBackground(Color.red);
-    }//GEN-LAST:event_Add2MouseEntered
-
-    private void Add2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseExited
-        // TODO add your handling code here:
-        Add.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_Add2MouseExited
-
-    private void AddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddMouseEntered
-
-    private void AddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddMouseExited
-
-    private void delMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseClicked
-        // TODO add your handling code here:
-        //Eliminar un renglon de la Jtable
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.removeRow(jTable1.getSelectedRow());
-        jTable1.changeSelection(jTable1.getRowCount()-1, 0, false, false);
-    }//GEN-LAST:event_delMouseClicked
-
-    private void delMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseEntered
-        // TODO add your handling code here:
-        Del.setBackground(Color.red);
-    }//GEN-LAST:event_delMouseEntered
-
-    private void delMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseExited
-        // TODO add your handling code here:
-        Del.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_delMouseExited
 
     private void jOptionPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOptionPane1MouseClicked
         // TODO add your handling code here:
         //generar reportes con la libreria i
     }//GEN-LAST:event_jOptionPane1MouseClicked
 
-    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
-
-        //Llenar con la fecha actual en formato date
-        Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        jTextField3.setText(dateFormat.format(date));
-
-    }//GEN-LAST:event_jTextField3MouseClicked
-
     private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5MouseClicked
 
+    private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fechaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Add;
-    private javax.swing.JLabel Add2;
-    private javax.swing.JPanel Del;
-    private javax.swing.JPanel GridDetalle;
     private javax.swing.JPanel background;
     private java.awt.Button button1;
-    private javax.swing.JPanel deOpt;
-    private javax.swing.JLabel del;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JOptionPane jOptionPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JFormattedTextField txt_fecha;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,10 +4,8 @@
  */
 package com.capturas;
 
-import java.awt.Color;
-
 import com.login.biblio_funciones;
-import java.awt.event.KeyEvent;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,10 +22,14 @@ public class Ventas extends javax.swing.JInternalFrame {
      */
     public Ventas() {
         initComponents();
-        //tamaño de el internal frame maximo
-        this.setSize(1366, 768);
-        //tamaño de el internal frame minimo
-        this.setMinimumSize(new java.awt.Dimension(1000, 600));
+        this.setClosable(true);
+        this.setIconifiable(true);
+        this.setMaximizable(true);
+        //Poder mover la ventana
+        this.setResizable(true);
+        //Poner el titulo
+        this.setTitle("Compras");
+
     }
 
     /**
@@ -39,7 +41,13 @@ public class Ventas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button1 = new java.awt.Button();
         background = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
         GridDetalle = new javax.swing.JPanel();
         deOpt = new javax.swing.JPanel();
         Add = new javax.swing.JPanel();
@@ -49,25 +57,36 @@ public class Ventas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
         jOptionPane1 = new javax.swing.JOptionPane();
         jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        button1 = new java.awt.Button();
-        jLabel2 = new javax.swing.JLabel();
+        txt_fecha = new javax.swing.JFormattedTextField();
+        jLabel5 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(1366, 768));
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                formKeyPressed(evt);
-            }
-        });
+        button1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        button1.setLabel("PAGAR");
 
         background.setBackground(new java.awt.Color(0, 102, 153));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel4.setText("Subtotal:");
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel3.setText("Total:");
+
+        jTextField4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextField5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
 
         GridDetalle.setBackground(new java.awt.Color(153, 153, 153));
         GridDetalle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,39 +168,47 @@ public class Ventas extends javax.swing.JInternalFrame {
 
         deOpt.add(Del);
 
-        GridDetalle.add(deOpt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 320));
+        GridDetalle.add(deOpt, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 340));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Estatus", "Libro", "Cliente", "Fecha Entrega", "Fecha Devolucion"
+                "Cliente", "Libro", "Cantidad", "Precio Unitario", "Subtotal", "Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jTable1.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-        GridDetalle.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1100, 320));
-
-        background.add(GridDetalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 1130, 320));
+        GridDetalle.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1040, 340));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ID");
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
-        background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 120, 10));
+        jLabel1.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel1.setText("ID:");
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel2.setText("Fecha:");
 
         jOptionPane1.setMessage("Imprimir Ticket"
         );
@@ -191,84 +218,120 @@ public class Ventas extends javax.swing.JInternalFrame {
                 jOptionPane1MouseClicked(evt);
             }
         });
-        background.add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 80, 170, 110));
 
-        jTextField2.setBorder(null);
-        background.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 120, 20));
+        jTextField2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Total");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 600, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Subtotal");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 570, -1, -1));
-
-        jTextField4.setBorder(null);
-        background.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 120, 20));
-
-        jTextField5.setBorder(null);
-        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField5MouseClicked(evt);
+        txt_fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fechaActionPerformed(evt);
             }
         });
-        background.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 600, 120, 20));
 
-        button1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        button1.setLabel("COBRAR");
-        background.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 580, 190, 70));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(405, 405, 405)
+                        .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(GridDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jOptionPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(GridDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(103, 103, 103))
+        );
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("VENTAS");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1270, 50));
+        background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1320, 660));
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("VENTAS");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1350, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 1320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+    private void Add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseClicked
         // TODO add your handling code here:
-        //Si presiono esc mostrar un dialog si presiona si se sale 
-        if(evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-            biblio_funciones.mensaje("Desea Salir?", "SALIR", 2);
-        }
-    }//GEN-LAST:event_formKeyPressed
+        //Agregar un renglon a la Jtable
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.addRow(new Object[]{"","","","",""});
+    }//GEN-LAST:event_Add2MouseClicked
 
-    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+    private void Add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5MouseClicked
+        Add.setBackground(Color.red);
+    }//GEN-LAST:event_Add2MouseEntered
 
-    private void jOptionPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOptionPane1MouseClicked
+    private void Add2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseExited
         // TODO add your handling code here:
-        //generar reportes con la libreria i
-    }//GEN-LAST:event_jOptionPane1MouseClicked
+        Add.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_Add2MouseExited
 
-    private void delMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseExited
+    private void AddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseEntered
         // TODO add your handling code here:
-        Del.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_delMouseExited
+    }//GEN-LAST:event_AddMouseEntered
 
-    private void delMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseEntered
+    private void AddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseExited
         // TODO add your handling code here:
-        Del.setBackground(Color.red);
-    }//GEN-LAST:event_delMouseEntered
+    }//GEN-LAST:event_AddMouseExited
 
     private void delMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseClicked
         // TODO add your handling code here:
@@ -278,33 +341,28 @@ public class Ventas extends javax.swing.JInternalFrame {
         jTable1.changeSelection(jTable1.getRowCount()-1, 0, false, false);
     }//GEN-LAST:event_delMouseClicked
 
-    private void AddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseExited
+    private void delMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddMouseExited
+        Del.setBackground(Color.red);
+    }//GEN-LAST:event_delMouseEntered
 
-    private void AddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseEntered
+    private void delMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddMouseEntered
+        Del.setBackground(new Color(242,242,242));
+    }//GEN-LAST:event_delMouseExited
 
-    private void Add2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseExited
+    private void jOptionPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jOptionPane1MouseClicked
         // TODO add your handling code here:
-        Add.setBackground(new Color(242,242,242));
-    }//GEN-LAST:event_Add2MouseExited
+        //generar reportes con la libreria i
+    }//GEN-LAST:event_jOptionPane1MouseClicked
 
-    private void Add2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseEntered
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
         // TODO add your handling code here:
-        Add.setBackground(Color.red);
-    }//GEN-LAST:event_Add2MouseEntered
+    }//GEN-LAST:event_jTextField5MouseClicked
 
-    private void Add2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Add2MouseClicked
+    private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
         // TODO add your handling code here:
-        //Agregar un renglon a la Jtable
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.addRow(new Object[]{"","","","",""});
-        //Poner el puntero en el campo nuevo
-        jTable1.changeSelection(jTable1.getRowCount()-1, 0, false, false);
-
-    }//GEN-LAST:event_Add2MouseClicked
+    }//GEN-LAST:event_txt_fechaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -320,13 +378,14 @@ public class Ventas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JOptionPane jOptionPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JFormattedTextField txt_fecha;
     // End of variables declaration//GEN-END:variables
-
 }

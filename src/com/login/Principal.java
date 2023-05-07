@@ -6,12 +6,15 @@ package com.login;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import com.abcs.*;
 import com.capturas.*;
 import com.consultas.c_Rentas;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import static java.lang.System.exit;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 /**
@@ -28,7 +31,8 @@ public class Principal extends javax.swing.JFrame {
         //que el maximo de la longitud y altura sea la resolucion de la pantalla
         this.setSize(getMaximumSize());
         this.setLocationRelativeTo(null);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setExtendedState(Principal.MAXIMIZED_BOTH);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,10 +43,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
         jDesktopPane1 = new javax.swing.JDesktopPane(){
             ImageIcon icon = new ImageIcon(getClass().getResource("../imgs/fondo.jpg"));
             Image image = icon.getImage();
@@ -52,9 +52,6 @@ public class Principal extends javax.swing.JFrame {
         };
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        Inicio = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        Salir = new javax.swing.JMenuItem();
         Abcs = new javax.swing.JMenu();
         Clientes = new javax.swing.JMenuItem();
         Proveedores = new javax.swing.JMenuItem();
@@ -64,18 +61,14 @@ public class Principal extends javax.swing.JFrame {
         Capturas = new javax.swing.JMenu();
         Ventas = new javax.swing.JMenuItem();
         Compras = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         Consultas = new javax.swing.JMenu();
         Consulta1 = new javax.swing.JMenuItem();
         Consulta2 = new javax.swing.JMenuItem();
         Consulta3 = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenu2.setText("File");
-        jMenuBar2.add(jMenu2);
-
-        jMenu3.setText("Edit");
-        jMenuBar2.add(jMenu3);
+        Salir = new javax.swing.JMenu();
+        CerrarSesion = new javax.swing.JMenuItem();
+        SalirF = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -102,16 +95,13 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 1584, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1920, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 1022, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 153));
@@ -120,34 +110,14 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jMenuBar1.setSelectionModel(null);
 
-        Inicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/users-icon.png"))); // NOI18N
-        Inicio.setText("Usuarios");
-        Inicio.setToolTipText("");
-        Inicio.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-
-        jMenuItem2.setText("Cerrar Sesion");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        Inicio.add(jMenuItem2);
-
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
-        Inicio.add(Salir);
-
-        jMenuBar1.add(Inicio);
-
         Abcs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/altas-icon.png"))); // NOI18N
         Abcs.setText("Archivos");
         Abcs.setToolTipText("");
+        Abcs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Abcs.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
+        Clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Clientes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Clientes.setText("Clientes");
         Clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +126,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Abcs.add(Clientes);
 
+        Proveedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Proveedores.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Proveedores.setText("Proveedores");
         Proveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +136,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Abcs.add(Proveedores);
 
+        Libros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Libros.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Libros.setText("Libros");
         Libros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +146,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Abcs.add(Libros);
 
+        Autores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Autores.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Autores.setText("Autores");
         Autores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +156,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Abcs.add(Autores);
 
+        Tarjetas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Tarjetas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Tarjetas.setText("Tarjetas");
         Tarjetas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,9 +171,11 @@ public class Principal extends javax.swing.JFrame {
         Capturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/capturas-icon.png"))); // NOI18N
         Capturas.setText("  Capturas");
         Capturas.setToolTipText("");
+        Capturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Capturas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
-        Ventas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Ventas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        Ventas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Ventas.setText("Ventas");
         Ventas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -209,7 +189,8 @@ public class Principal extends javax.swing.JFrame {
         });
         Capturas.add(Ventas);
 
-        Compras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Compras.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        Compras.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Compras.setText("Compras");
         Compras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,13 +199,23 @@ public class Principal extends javax.swing.JFrame {
         });
         Capturas.add(Compras);
 
+        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        Capturas.add(jMenuItem2);
+
         jMenuBar1.add(Capturas);
 
         Consultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/reportes-icon.png"))); // NOI18N
         Consultas.setText("Reportes");
         Consultas.setToolTipText("");
+        Consultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Consultas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
+        Consulta1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Consulta1.setText("Rentas");
         Consulta1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,13 +224,45 @@ public class Principal extends javax.swing.JFrame {
         });
         Consultas.add(Consulta1);
 
+        Consulta2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Consulta2.setText("Compras");
         Consultas.add(Consulta2);
 
+        Consulta3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Consulta3.setText("Localizacion Libros");
         Consultas.add(Consulta3);
 
         jMenuBar1.add(Consultas);
+
+        Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/salida.png"))); // NOI18N
+        Salir.setText("<-SALIR");
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salir.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
+        CerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        CerrarSesion.setText("Cerrar Sesion");
+        CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CerrarSesionActionPerformed(evt);
+            }
+        });
+        Salir.add(CerrarSesion);
+
+        SalirF.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        SalirF.setText("Salir");
+        SalirF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirFActionPerformed(evt);
+            }
+        });
+        Salir.add(SalirF);
+
+        jMenuBar1.add(Salir);
 
         setJMenuBar(jMenuBar1);
 
@@ -292,21 +315,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
           // TODO add your handling code here:
-          //presionar alt para navegar con los menus
-            if (evt.getKeyCode() == KeyEvent.VK_ALT) {
-                Inicio.setArmed(true);
-                Inicio.setSelected(true);
-                Inicio.requestFocus();
-            }
-          //presionar escape para salir de la aplicacion
-            if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                //preguntar si queires salir con un jdialog
-                int res= biblio_funciones.mensajeDecision("Deseas Salir?", "Cierre de la aplicacion", "si", "no");
-                if (res==0) {
-                    System.exit(0);
-                }
- 
-            }
+
     }//GEN-LAST:event_formKeyPressed
 
     private void ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprasActionPerformed
@@ -345,26 +354,39 @@ public class Principal extends javax.swing.JFrame {
         inicializarFrame(v);
     }//GEN-LAST:event_TarjetasActionPerformed
 
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        // TODO add your handling code here:
-        //DEBERIA DE DEJAR LA SESION INICIADA
-        System.exit(0);
-    }//GEN-LAST:event_SalirActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-         int res= biblio_funciones.mensajeDecision("Deseas Cerrar la sesion actual?", "Cierre de Sesion", "si", "no");
-                if (res==0) {
-                    this.dispose();
-                    Login lo = new Login();
-                    lo.show();
-                }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jLabel10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel10KeyPressed
         // TODO add your handling code here:
 
     }//GEN-LAST:event_jLabel10KeyPressed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_SalirActionPerformed
+
+    private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
+        // TODO add your handling code here:
+           int res= biblio_funciones.mensajeDecision("Deseas Cerrar la sesion actual?", "Cierre de Sesion", "si", "no");
+        if (res==0) {
+            this.dispose();
+            Login lo = new Login();
+            lo.show();
+        }
+    }//GEN-LAST:event_CerrarSesionActionPerformed
+
+    private void SalirFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirFActionPerformed
+        // TODO add your handling code here:
+           int res= biblio_funciones.mensajeDecision("Deseas Salir del Programa?", "SALIR", "SI", "NO");
+        if (res==0) {
+               exit(0);
+        }
+    }//GEN-LAST:event_SalirFActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+         Compras p1 = new Compras();
+        inicializarFrame(p1);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
@@ -430,25 +452,22 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu Abcs;
     private javax.swing.JMenuItem Autores;
     private javax.swing.JMenu Capturas;
+    private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JMenuItem Clientes;
     private javax.swing.JMenuItem Compras;
     private javax.swing.JMenuItem Consulta1;
     private javax.swing.JMenuItem Consulta2;
     private javax.swing.JMenuItem Consulta3;
     private javax.swing.JMenu Consultas;
-    private javax.swing.JMenu Inicio;
     private javax.swing.JMenuItem Libros;
     private javax.swing.JMenuItem Proveedores;
-    private javax.swing.JMenuItem Salir;
+    private javax.swing.JMenu Salir;
+    private javax.swing.JMenuItem SalirF;
     private javax.swing.JMenuItem Tarjetas;
     private javax.swing.JMenuItem Ventas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
