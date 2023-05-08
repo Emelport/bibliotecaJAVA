@@ -9,24 +9,25 @@
 	<title>
 		<band height="111" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="455" y="40" width="100" height="20" uuid="2afc61be-8d88-430f-8ac8-987a05180b5a"/>
+				<reportElement x="433" y="32" width="100" height="20" uuid="2afc61be-8d88-430f-8ac8-987a05180b5a"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="215" y="40" width="147" height="62" uuid="be7266ab-f795-4c27-b280-9054282a6956"/>
+				<reportElement x="193" y="22" width="147" height="62" uuid="be7266ab-f795-4c27-b280-9054282a6956"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="32"/>
 				</textElement>
 				<text><![CDATA[VENTAS]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="158" height="111" uuid="d9c32187-d00d-4526-b051-b334ce42efe4"/>
-				<imageExpression><![CDATA["C:\\Users\\Elias\\Desktop\\logo_con_fondo-removebg-preview.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="116" splitType="Stretch"/>
+		<band height="116" splitType="Stretch">
+			<textField>
+				<reportElement x="36" y="48" width="100" height="20" uuid="4b52e2f9-1093-4a28-b74f-a82637639c04"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch"/>

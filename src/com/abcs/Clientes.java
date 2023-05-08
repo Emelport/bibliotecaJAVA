@@ -7,7 +7,7 @@ package com.abcs;
 import com.funciones.Api;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+import com.login.biblio_funciones;
 /**
  *
  * @author Elias
@@ -17,6 +17,15 @@ public class Clientes extends javax.swing.JInternalFrame {
     /**
      * Creates new form Clientes
      */
+        String nombre;
+        String fecha;
+        String id;
+        String direccion;
+        String email;
+        String telefono;
+        Api api = new Api();
+
+
     public Clientes() {
         initComponents();
           this.setClosable(true);
@@ -37,7 +46,55 @@ public class Clientes extends javax.swing.JInternalFrame {
 
          txt_fecha.setText(fechaFormateada);
     }
+    
+    
+    public void camposRojos(String nombre, String fecha, String direccion, String email, String telefono){
+        //Poner los jtextfields en rojo del que este vacio
+        if(nombre.equals("")){
+            txt_nombre.setBackground(new java.awt.Color(255, 0, 0));
+        }
+        else
+        {
+            txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
+        }
+        if(fecha.equals("")){
+            txt_fecha.setBackground(new java.awt.Color(255, 0, 0));
+        }
+        else
+        {
+            txt_fecha.setBackground(new java.awt.Color(255, 255, 255));
+        }
+        if(direccion.equals("")){
+            txt_direccion.setBackground(new java.awt.Color(255, 0, 0));
+        }
+        else
+        {
+            txt_direccion.setBackground(new java.awt.Color(255, 255, 255));
+        }
+        if(email.equals("")){
+            txt_email.setBackground(new java.awt.Color(255, 0, 0));
+        }
+        else
+        {
+            txt_email.setBackground(new java.awt.Color(255, 255, 255));
+        }
+        if(telefono.equals("")){
+            txt_telefono.setBackground(new java.awt.Color(255, 0, 0));
+        }
+        else
+        {
+            txt_telefono.setBackground(new java.awt.Color(255, 255, 255));
+        }
+    }
 
+    public void camposBlancos(){
+        //Poner los campos en blanco
+        txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
+        txt_fecha.setBackground(new java.awt.Color(255, 255, 255));
+        txt_direccion.setBackground(new java.awt.Color(255, 255, 255));
+        txt_email.setBackground(new java.awt.Color(255, 255, 255));
+        txt_telefono.setBackground(new java.awt.Color(255, 255, 255));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,6 +176,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel1.setText("Buscar:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setNextFocusableComponent(txt_id);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,6 +210,7 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
         });
 
+        txt_nombre.setNextFocusableComponent(txt_direccion);
         txt_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nombreActionPerformed(evt);
@@ -165,24 +224,28 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
         });
 
+        txt_id.setNextFocusableComponent(txt_fecha);
         txt_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idActionPerformed(evt);
             }
         });
 
+        txt_direccion.setNextFocusableComponent(txt_email);
         txt_direccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_direccionActionPerformed(evt);
             }
         });
 
+        txt_email.setNextFocusableComponent(txt_telefono);
         txt_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_emailActionPerformed(evt);
             }
         });
 
+        txt_telefono.setNextFocusableComponent(btn_anadir);
         txt_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_telefonoActionPerformed(evt);
@@ -193,72 +256,71 @@ public class Clientes extends javax.swing.JInternalFrame {
         Datos.setLayout(DatosLayout);
         DatosLayout.setHorizontalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(DatosLayout.createSequentialGroup()
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DatosLayout.createSequentialGroup()
-                                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DatosLayout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(btn_anadir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(135, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DatosLayout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel6)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(DatosLayout.createSequentialGroup()
+                                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DatosLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_fecha)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_fecha))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(18, 19, Short.MAX_VALUE)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(txt_email, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,20 +377,32 @@ public class Clientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_backgroundMouseClicked
 
     private void btn_anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_anadirActionPerformed
+        
+        //Obtener los datos de los campos de texto
         String cliente_nombre = txt_nombre.getText();
         String cliente_direccion = txt_direccion.getText();
         String cliente_email = txt_email.getText();
         String cliente_telefono = txt_telefono.getText();
+        String cliente_fecha = txt_fecha.getText();
+        
+        //Validar campos vacios, si alguno esta vacio poner el campo de color rojo
+        if(cliente_nombre.isEmpty() || cliente_direccion.isEmpty() || cliente_email.isEmpty() || cliente_telefono.isEmpty() || cliente_fecha.isEmpty()){
+            camposRojos(cliente_nombre, cliente_fecha, cliente_direccion, cliente_email, cliente_telefono);
+        }else{
+            camposBlancos();
+            String json = "{" +
+                            "\"nombre\": \"" + cliente_nombre + "\"," +
+                            "\"direccion\": \"" + cliente_direccion + "\"," +
+                            "\"email\": \"" + cliente_email + "\"," +
+                            "\"telefono\": \"" + cliente_telefono + "\"," +
+                            "\"fecha\": \"" + cliente_fecha + "\"" +
+                        "}";
 
-      String json = "{" +
-                    "\"nombre\": \"" + cliente_nombre + "\"," +
-                    "\"direccion\": \"" + cliente_direccion + "\"," +
-                    "\"email\": \"" + cliente_email + "\"," +
-                    "\"telefono\": \"" + cliente_telefono + "\"" +
-                    "}";
-        String ruta = "/insertar_cliente";
-        Api a = new Api();
-        a.insertar(json, ruta);
+            String ruta = "/insertar_cliente";
+            Api a = new Api();
+            a.insertar(json, ruta);
+        }
+     
     }//GEN-LAST:event_btn_anadirActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
