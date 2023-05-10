@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,6 +55,21 @@ public class biblio_funciones {
         return respuesta;
     }
 
+    public static List<String> tratarRequest(String datos) {
+        //Separa los datos por | para cada fila y por -- para cada columna
+        String[] filas = datos.split("\\|");
+        //Lista con su nombre y su id
+        List<String> lista = new java.util.ArrayList<>();
+        
+        for (String fila : filas) {
+            String[] columnas = fila.split("--");
+            lista.add(columnas[0]+"_"+columnas[1]);  
+        }
+
+        //mostrar la lista en un dialog
+        return lista;
+    
+    }
     
     
 

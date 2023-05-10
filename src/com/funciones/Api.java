@@ -1,6 +1,9 @@
 
 package com.funciones;
 import com.login.biblio_funciones;
+
+import netscape.javascript.JSObject;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -25,7 +28,7 @@ public class Api {
 //    ejemplo de ruta ===> ruta = /insertar_autor
 //    ejemplo de json ===> String json = "{\"nombre\": \"" + autor_nombre + "\" }";
 
-    public  void insertar(String json,String ruta){
+    public String insertar(String json,String ruta){
         HttpRequest request = HttpRequest.newBuilder()
             .uri(URI.create(this.url_api + ruta))
             .header("Content-Type", "application/json")
@@ -34,9 +37,11 @@ public class Api {
         try {
             HttpResponse<String> response = this.client.send(request, BodyHandlers.ofString());
             biblio_funciones.mensaje(response.body(),"insertar" , 1);
+            return response.body();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }       
+        return null;
     }
     
     public void modificar(String json,String ruta){
@@ -52,5 +57,21 @@ public class Api {
             e.printStackTrace();
         }       
     }
-    
+
+    public String obtener(String ruta)
+    {
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(this.url_api + ruta))
+            .header("Content-Type", "application/json")
+            .build();
+        try {
+            HttpResponse<String> response = this.client.send(request, BodyHandlers.ofString());
+            return response.body();
+         
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

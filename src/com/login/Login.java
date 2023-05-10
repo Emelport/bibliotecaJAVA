@@ -4,6 +4,7 @@
  */
 package com.login;
 
+import com.funciones.Api;
 import java.awt.*;
 
 /**
@@ -303,13 +304,37 @@ public class Login extends javax.swing.JFrame {
         String user = user_Entry.getText();
         String psw = String.valueOf(psw_Entry.getPassword());
         
-        Boolean res= login(user,psw);
-        if(res) {
-            biblio_funciones.mensaje("Bienvenido, " + user, "Acceso Correcto", 1);
-            Principal formMenu = new Principal();
-            formMenu.show();
-            this.dispose();
+        //validar que los campos no esten vacios
+        if(user.equals("")){
+            biblio_funciones.mensaje( "Ingrese un Usuario", "AVISO",2);
+            user_Entry.requestFocus();
+            return;
         }
+        if(psw.equals("")){
+            biblio_funciones.mensaje( "Ingrese una Contraseña", "AVISO",2);
+            psw_Entry.requestFocus();
+            return;
+        }
+
+        //validar que el usuario exista en la api
+        Api api = new Api();
+        //armar el json
+        String json = "{\"usuario\":\""+user+"\",\"password\":\""+psw+"\"}";
+        String res = api.insertar(json,"/login");
+
+
+        if(res.equals("1")){
+            //abrir el menu
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            this.dispose();
+        }else{
+            //si el usuario no existe
+            biblio_funciones.mensaje( "Usuario o Contraseña Incorrectos", "AVISO",2);
+            user_Entry.requestFocus();
+            return;
+        }
+        
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void user_EntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user_EntryActionPerformed
