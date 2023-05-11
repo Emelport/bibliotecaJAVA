@@ -82,7 +82,11 @@ public class Autores extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/key-person.png"))); // NOI18N
         jLabel2.setText("Buscar:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elias melendez", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,10 +212,10 @@ public class Autores extends javax.swing.JInternalFrame {
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         //Se obtiene el autor del combo box
-        String datosAutor = (String) combo_autor.getSelectedItem();
+        String datosAutor = (String) jComboBox1.getSelectedItem();
         String[] partes = datosAutor.split("_");
         String id_autor = partes[0];
-        String nombre_autor = partes[1];
+        String nombre_autor = txt_nombre.getText();
 
         if (nombre_autor.equals("")) {
             txt_nombre.setBackground(new java.awt.Color(255, 0, 0));
@@ -224,7 +228,7 @@ public class Autores extends javax.swing.JInternalFrame {
 
         String ruta = "/modificar_autor";
         Api a = new Api();
-        a.insertar(json, ruta);
+        a.modificar(json, ruta);
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
@@ -244,6 +248,17 @@ public class Autores extends javax.swing.JInternalFrame {
             jComboBox1.addItem(autor);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        //Se obtiene el autor del combo box
+        String datosAutor = (String) jComboBox1.getSelectedItem();
+        String[] partes = datosAutor.split("_");
+        String id_autor = partes[0];
+        String nombre_autor = partes[1];
+        txt_nombre.setText(nombre_autor);
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

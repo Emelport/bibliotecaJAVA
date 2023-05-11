@@ -370,8 +370,8 @@ public class Login extends javax.swing.JFrame {
         //validar que el usuario exista en la api
         Api api = new Api();
         //armar el json
-        String json = "{\"usuario\":\""+user+"\",\"password\":\""+psw+"\"}";
-        String res = api.insertar(json,"/verificarCredenciales");
+        //@app.route('/verificarCredenciales/<usuario>/<password>')        
+        String res = api.obtener("/verificarCredenciales/"+user+"/"+psw);
 
         //si es un uno, el usuario existe 
         if(res.equals("1")){

@@ -25,7 +25,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         this.setTitle("Clientes");
     }
     
-    public void camposRojos(String nombre, String fecha, String direccion, String email, String telefono){
+    public void camposRojos(String nombre, String direccion, String email, String telefono){
         //Poner los jtextfields en rojo del que este vacio
         if(nombre.equals("")){
             txt_nombre.setBackground(new java.awt.Color(255, 0, 0));
@@ -33,13 +33,6 @@ public class Clientes extends javax.swing.JInternalFrame {
         else
         {
             txt_nombre.setBackground(new java.awt.Color(255, 255, 255));
-        }
-        if(fecha.equals("")){
-            txt_fecha.setBackground(new java.awt.Color(255, 0, 0));
-        }
-        else
-        {
-            txt_fecha.setBackground(new java.awt.Color(255, 255, 255));
         }
         if(direccion.equals("")){
             txt_direccion.setBackground(new java.awt.Color(255, 0, 0));
@@ -93,9 +86,8 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        actualizar = new javax.swing.JButton();
+        btn_modificar = new javax.swing.JButton();
         btn_anadir = new javax.swing.JButton();
         txt_nombre = new javax.swing.JTextField();
         txt_fecha = new javax.swing.JFormattedTextField();
@@ -132,7 +124,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 153));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Fecha Nacimiento:");
+        jLabel5.setText("Fecha Registro:");
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 153));
@@ -195,10 +187,10 @@ public class Clientes extends javax.swing.JInternalFrame {
             .addGap(0, 28, Short.MAX_VALUE)
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/actualizar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/actualizar.png"))); // NOI18N
+        actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                actualizarActionPerformed(evt);
             }
         });
 
@@ -212,7 +204,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(actualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(135, Short.MAX_VALUE))
@@ -224,16 +216,19 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(actualizar, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))))
                 .addContainerGap())
         );
 
-        jButton3.setText("Actualizar");
-
-        jButton2.setText("Eliminar");
+        btn_modificar.setText("Actualizar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         btn_anadir.setText("Añadir");
         btn_anadir.addActionListener(new java.awt.event.ActionListener() {
@@ -293,10 +288,8 @@ public class Clientes extends javax.swing.JInternalFrame {
                     .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(DatosLayout.createSequentialGroup()
                             .addComponent(btn_anadir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(160, 160, 160)
+                            .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(DatosLayout.createSequentialGroup()
                             .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(DatosLayout.createSequentialGroup()
@@ -320,7 +313,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                                     .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGap(18, 18, 18)
                                     .addComponent(txt_fecha)))))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -354,8 +347,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addGap(57, 57, 57)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_anadir)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btn_modificar))
                 .addGap(28, 28, 28))
         );
 
@@ -412,8 +404,8 @@ public class Clientes extends javax.swing.JInternalFrame {
         String cliente_fecha = txt_fecha.getText();
         
         //Validar campos vacios, si alguno esta vacio poner el campo de color rojo
-        if(cliente_nombre.isEmpty() || cliente_direccion.isEmpty() || cliente_email.isEmpty() || cliente_telefono.isEmpty() || cliente_fecha.isEmpty()){
-            camposRojos(cliente_nombre, cliente_fecha, cliente_direccion, cliente_email, cliente_telefono);
+        if(cliente_nombre.isEmpty() || cliente_direccion.isEmpty() || cliente_email.isEmpty() || cliente_telefono.isEmpty()){
+            camposRojos(cliente_nombre, cliente_direccion, cliente_email, cliente_telefono);
         }else{
             camposBlancos();
             String json = "{" +
@@ -500,8 +492,7 @@ public class Clientes extends javax.swing.JInternalFrame {
           jPanel3.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_jPanel3MouseExited
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
         Api a = new Api();
         String ruta = "/obtener_clientes";
         String datos = a.obtener(ruta);
@@ -512,16 +503,43 @@ public class Clientes extends javax.swing.JInternalFrame {
         for (String cliente : clientes) {
             jComboBox1.addItem(cliente);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_actualizarActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        // TODO add your handling code here:
+        //Obtener los datos de los campos de texto
+        String cliente_id = txt_id.getText();
+        String cliente_nombre = txt_nombre.getText();
+        String cliente_direccion = txt_direccion.getText();
+        String cliente_email = txt_email.getText();
+        String cliente_telefono = txt_telefono.getText();
+
+        //Validar campos vacios, si alguno esta vacio poner el campo de color rojo
+        if(cliente_nombre.isEmpty() || cliente_direccion.isEmpty() || cliente_email.isEmpty() || cliente_telefono.isEmpty()){
+            camposRojos(cliente_nombre, cliente_direccion, cliente_email, cliente_telefono);
+        }else{
+            camposBlancos();
+            String json = "{" +
+                            "\"id_cliente\": \"" + cliente_id + "\"," +
+                            "\"nombre\": \"" + cliente_nombre + "\"," +
+                            "\"direccion\": \"" + cliente_direccion + "\"," +
+                            "\"telefono\": \"" + cliente_telefono + "\"," +
+                            "\"email\": \"" + cliente_email + "\"" +
+                        "}";
+            String ruta = "/modificar_cliente";
+            Api a = new Api();
+            a.modificar(json, ruta);
+        }
+    
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Datos;
+    private javax.swing.JButton actualizar;
     private javax.swing.JPanel background;
     private javax.swing.JButton btn_anadir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn_modificar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

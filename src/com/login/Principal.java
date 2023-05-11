@@ -6,14 +6,10 @@ package com.login;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import com.abcs.*;
 import com.capturas.*;
 import com.consultas.c_Rentas;
-import java.awt.Dimension;
-import java.awt.event.KeyEvent;
 import static java.lang.System.exit;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -53,10 +49,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Abcs = new javax.swing.JMenu();
-        Clientes = new javax.swing.JMenuItem();
-        Proveedores = new javax.swing.JMenuItem();
-        Libros = new javax.swing.JMenuItem();
         Autores = new javax.swing.JMenuItem();
+        Clientes = new javax.swing.JMenuItem();
+        Libros = new javax.swing.JMenuItem();
+        Proveedores = new javax.swing.JMenuItem();
         Tarjetas = new javax.swing.JMenuItem();
         Capturas = new javax.swing.JMenu();
         Ventas = new javax.swing.JMenuItem();
@@ -116,6 +112,16 @@ public class Principal extends javax.swing.JFrame {
         Abcs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Abcs.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
+        Autores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Autores.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Autores.setText("Autores");
+        Autores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AutoresActionPerformed(evt);
+            }
+        });
+        Abcs.add(Autores);
+
         Clientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_DOWN_MASK));
         Clientes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Clientes.setText("Clientes");
@@ -125,16 +131,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         Abcs.add(Clientes);
-
-        Proveedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        Proveedores.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Proveedores.setText("Proveedores");
-        Proveedores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProveedoresActionPerformed(evt);
-            }
-        });
-        Abcs.add(Proveedores);
 
         Libros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.ALT_DOWN_MASK));
         Libros.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -146,15 +142,15 @@ public class Principal extends javax.swing.JFrame {
         });
         Abcs.add(Libros);
 
-        Autores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        Autores.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Autores.setText("Autores");
-        Autores.addActionListener(new java.awt.event.ActionListener() {
+        Proveedores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        Proveedores.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Proveedores.setText("Proveedores");
+        Proveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AutoresActionPerformed(evt);
+                ProveedoresActionPerformed(evt);
             }
         });
-        Abcs.add(Autores);
+        Abcs.add(Proveedores);
 
         Tarjetas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.ALT_DOWN_MASK));
         Tarjetas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
