@@ -5,6 +5,8 @@
 package com.abcs;
 
 import com.funciones.Api;
+import com.login.biblio_funciones;
+import java.util.List;
 
 /**
  *
@@ -44,6 +46,7 @@ public class Autores extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         txt_nombre = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(0, 102, 153));
@@ -108,13 +111,22 @@ public class Autores extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/actualizar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
         DatosLayout.setHorizontalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DatosLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(0, 77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
                 .addContainerGap(107, Short.MAX_VALUE)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,7 +143,11 @@ public class Autores extends javax.swing.JInternalFrame {
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
@@ -191,16 +207,19 @@ public class Autores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_anadirActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
-         String autor_nombre = txt_nombre.getText();
-         //FALTA EL ID
-        //si esta vacio ponerlo en rojo
-        if (autor_nombre.equals("")) {
+        //Se obtiene el autor del combo box
+        String datosAutor = (String) combo_autor.getSelectedItem();
+        String[] partes = datosAutor.split("_");
+        String id_autor = partes[0];
+        String nombre_autor = partes[1];
+
+        if (nombre_autor.equals("")) {
             txt_nombre.setBackground(new java.awt.Color(255, 0, 0));
             return;
         } 
-
         String json = "{" +
-                            "\"nombre\": \"" + autor_nombre + "\"" +
+                            "\"id_autor\": \"" + id_autor + "\"," +
+                            "\"nombre\": \"" + nombre_autor + "\"" +
                         "}";
 
         String ruta = "/modificar_autor";
@@ -212,12 +231,27 @@ public class Autores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Api a = new Api();
+        String ruta = "/obtener_autores";
+        String datos = a.obtener(ruta);
+
+        List<String> autores = biblio_funciones.tratarRequest(datos);
+        biblio_funciones.mensaje("Se encontraron "+autores.size()+" Autores.", "Actualizar", 1);
+        jComboBox1.removeAllItems();
+        for (String autor : autores) {
+            jComboBox1.addItem(autor);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Datos;
     private javax.swing.JPanel background;
     private javax.swing.JButton btn_anadir;
     private javax.swing.JButton btn_modificar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

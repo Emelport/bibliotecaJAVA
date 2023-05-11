@@ -313,27 +313,9 @@ public class Login extends javax.swing.JFrame {
         if(psw.equals("")){
             biblio_funciones.mensaje( "Ingrese una Contraseña", "AVISO",2);
             psw_Entry.requestFocus();
-            return;
         }
 
-        //validar que el usuario exista en la api
-        Api api = new Api();
-        //armar el json
-        String json = "{\"usuario\":\""+user+"\",\"password\":\""+psw+"\"}";
-        String res = api.insertar(json,"/login");
 
-
-        if(res.equals("1")){
-            //abrir el menu
-            Menu menu = new Menu();
-            menu.setVisible(true);
-            this.dispose();
-        }else{
-            //si el usuario no existe
-            biblio_funciones.mensaje( "Usuario o Contraseña Incorrectos", "AVISO",2);
-            user_Entry.requestFocus();
-            return;
-        }
         
     }//GEN-LAST:event_jLabel5MouseClicked
 
@@ -352,9 +334,8 @@ public class Login extends javax.swing.JFrame {
     private void psw_EntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psw_EntryActionPerformed
         //si se presiona enter
         String user = user_Entry.getText();
-        
         String psw = String.valueOf(psw_Entry.getPassword());
-
+        
         Boolean res= login(user,psw);
         if(res) {
             biblio_funciones.mensaje("Bienvenido, " + user, "Acceso Correcto", 1);
@@ -362,9 +343,6 @@ public class Login extends javax.swing.JFrame {
             formMenu.show();
             this.dispose();
         }
-
-        
-
     }//GEN-LAST:event_psw_EntryActionPerformed
 
     private void psw_EntryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_psw_EntryFocusLost
@@ -385,30 +363,28 @@ public class Login extends javax.swing.JFrame {
 
     private void psw_EntryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_psw_EntryKeyPressed
         // TODO add your handling code here:
-          // TODO add your handling code here:
-       
+ 
     }//GEN-LAST:event_psw_EntryKeyPressed
     
     public Boolean login(String user,String psw){
-       
-        if (user.equals("osman") && psw.equals("osman2002")){
+        //validar que el usuario exista en la api
+        Api api = new Api();
+        //armar el json
+        String json = "{\"usuario\":\""+user+"\",\"password\":\""+psw+"\"}";
+        String res = api.insertar(json,"/verificarCredenciales");
+
+        //si es un uno, el usuario existe 
+        if(res.equals("1")){
             return true;
-        }
-        else{
-            biblio_funciones.mensaje("Usuario y/o Contraseña incorrectos", "ERROR", 2);
-        }
-        return false;
+        }else{
+            biblio_funciones.mensaje("Usuario o Contraseña Incorrectos", "Acceso Incorrecto", 2);
+            return false;
+        }   
     }
     
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+  
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
