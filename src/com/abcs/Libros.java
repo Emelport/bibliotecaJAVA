@@ -20,16 +20,41 @@ public class Libros extends javax.swing.JInternalFrame {
      */
     public Libros() {
         initComponents();
-          this.setClosable(true);
+
+        this.setClosable(true);
         this.setIconifiable(true);
         this.setMaximizable(true);
-        //Poder mover la ventana
         this.setResizable(true);
-        //Poner el titulo
         this.setTitle("Libros");
-
+        
+        cargarCombos();
     }
 
+    private void cargarCombos(){
+        Api a = new Api();
+
+        //Estantes
+        String datos = a.obtener("/obtener_clientes");
+        List<String> lista = biblio_funciones.tratarRequest(datos);
+        for (String string : lista) {
+            comboEstantes.addItem(string);
+        }
+
+        //Autores
+        datos = a.obtener("/obtener_autores");
+        lista = biblio_funciones.tratarRequest(datos);
+        for (String string : lista) {
+            comboAutores.addItem(string);
+        }
+
+        //Generos
+        datos = a.obtener("/obtener_generos");
+        lista = biblio_funciones.tratarRequest(datos);
+        for (String string : lista) {
+            comboGeneros.addItem(string);
+        }
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,7 +94,7 @@ public class Libros extends javax.swing.JInternalFrame {
         txt_precio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        comboClientes = new javax.swing.JComboBox<>();
+        comboEstantes = new javax.swing.JComboBox<>();
         comboGeneros = new javax.swing.JComboBox<>();
         comboAutores = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
@@ -191,8 +216,18 @@ public class Libros extends javax.swing.JInternalFrame {
         });
 
         jButton1.setText("Añadir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Actualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -274,7 +309,7 @@ public class Libros extends javax.swing.JInternalFrame {
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_paginas, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
-                            .addComponent(comboClientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(comboEstantes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(DatosLayout.createSequentialGroup()
@@ -341,7 +376,7 @@ public class Libros extends javax.swing.JInternalFrame {
                     .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel14)
                         .addComponent(jLabel15)
-                        .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboEstantes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(comboGeneros, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(comboAutores, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -416,9 +451,9 @@ public class Libros extends javax.swing.JInternalFrame {
 
         List<String> clientes = biblio_funciones.tratarRequest(datos);
         biblio_funciones.mensaje("Se encontraron "+clientes.size()+" Libros Registrados.", "Consulta", 1);
-        comboClientes.removeAllItems();
+        comboEstantes.removeAllItems();
         for (String cliente : clientes) {
-            comboClientes.addItem(cliente);
+            comboEstantes.addItem(cliente);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -457,17 +492,191 @@ public class Libros extends javax.swing.JInternalFrame {
                 indice = i;
             }
         }
-        jComboBox1.setSelectedIndex(indice);
+        comboEstantes.setSelectedIndex(indice);
+
+        //Obtener el dato del autor y buscarlo en la api
+        //cargar todos los autores y seleccionar el indice que devuelve la api
+        String autor = datos_separados[11];
+        String ruta_autor = "/obtener_Autores";
+        String datos_autor = a.obtener(ruta_autor);
+        String[] autores_separados = datos_autor.split("--");
+        int indice_autor = 0;
+        for (int i = 0; i < autores_separados.length; i++) {
+            if (autores_separados[i].equals(autor)) {
+                indice_autor = i;
+            }
+        }
+        comboAutores.setSelectedIndex(indice_autor);
+
+        //Obtener el dato del genero y buscarlo en la api
+        //cargar todos los generos y seleccionar el indice que devuelve la api
+        String genero = datos_separados[12];
+        String ruta_genero = "/obtener_Generos";
+
+        String datos_genero = a.obtener(ruta_genero);
+        String[] generos_separados = datos_genero.split("--");
+        int indice_genero = 0;
+        for (int i = 0; i < generos_separados.length; i++) {
+            if (generos_separados[i].equals(genero)) {
+                indice_genero = i;
+            }
+        }
+        comboGeneros.setSelectedIndex(indice_genero);
 
       
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //Anadir un nuevo cliente
+        String titulo = txt_titulo.getText();
+        String precio = txt_precio.getText();
+        String cantidad = txt_cantidad.getText();
+        String editorial = txt_editorial.getText();
+        String fechapubli = txt_fechapubli.getText();
+        String paginas = txt_paginas.getText();
+        String idioma = txt_idioma.getText();
+        String isbn = txt_isbn.getText();
+        String descripcion = txt_descripcion.getText();
+        String estante = comboEstantes.getSelectedItem().toString();
+        String autor = comboAutores.getSelectedItem().toString();
+        String genero = comboGeneros.getSelectedItem().toString();
+        //Si alguno de esos campos esta vacia poner camposRojos
+        if(titulo.equals("") || precio.equals("") || cantidad.equals("") || editorial.equals("") || fechapubli.equals("") || paginas.equals("") || idioma.equals("") || isbn.equals("") || descripcion.equals("")){
+            camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, autor, genero);
+        }else{
+            camposBlancos();
+            //Si no esta vacia enviar los datos a la api
+            Api a = new Api();
+            String ruta="/insertar_libro";
+            String json= "{"
+                + "\"titulo\":\""+titulo+"\","
+                + "\"precioxdia\":\""+precio+"\","
+                + "\"num_ejemplares\":\""+cantidad+"\","
+                + "\"editorial\":\""+editorial+"\","
+                + "\"fecha_publicacion\":\""+fechapubli+"\","
+                + "\"num_paginas\":\""+paginas+"\","
+                + "\"idioma\":\""+idioma+"\","
+                + "\"isbn\":\""+isbn+"\","
+                + "\"descripcion\":\""+descripcion+"\","
+                + "\"id_estante\":\""+estante+"\","
+                + "\"id_autor\":\""+autor+"\","
+                + "\"id_genero\":\""+genero+"\""
+            + "}";
+
+            a.insertar(ruta, json);
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        //Anadir un nuevo cliente
+        String titulo = txt_titulo.getText();
+        String precio = txt_precio.getText();
+        String cantidad = txt_cantidad.getText();
+        String editorial = txt_editorial.getText();
+        String fechapubli = txt_fechapubli.getText();
+        String paginas = txt_paginas.getText();
+        String idioma = txt_idioma.getText();
+        String isbn = txt_isbn.getText();
+        String descripcion = txt_descripcion.getText();
+        String estante = comboEstantes.getSelectedItem().toString();
+        String autor = comboAutores.getSelectedItem().toString();
+        String genero = comboGeneros.getSelectedItem().toString();
+        //Si alguno de esos campos esta vacia poner camposRojos
+        if(titulo.equals("") || precio.equals("") || cantidad.equals("") || editorial.equals("") || fechapubli.equals("") || paginas.equals("") || idioma.equals("") || isbn.equals("") || descripcion.equals("")){
+            camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, autor, genero);
+        }else{
+            camposBlancos();
+            //Si no esta vacia enviar los datos a la api
+            Api a = new Api();
+            String ruta="insertar_libros";
+            String json= "{"
+                + "\"titulo\":\""+titulo+"\","
+                + "\"precio\":\""+precio+"\","
+                + "\"cantidad\":\""+cantidad+"\","
+                + "\"editorial\":\""+editorial+"\","
+                + "\"fechapubli\":\""+fechapubli+"\","
+                + "\"paginas\":\""+paginas+"\","
+                + "\"idioma\":\""+idioma+"\","
+                + "\"isbn\":\""+isbn+"\","
+                + "\"descripcion\":\""+descripcion+"\","
+                + "\"estante\":\""+estante+"\","
+                + "\"autor\":\""+autor+"\","
+                + "\"genero\":\""+genero+"\""
+            + "}";
+
+            a.modificar(ruta, json);
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+ 
+    private void camposRojos(String titulo,String precio,String cantidad,String editorial,String fechapubli,String paginas,String idioma,String isbn, String descripcion, String estante, String autor, String genero){
+        
+        //validar que los campos no esten vacios
+        if (titulo.equals("")) {
+            txt_titulo.setBackground(Color.red);
+        }
+        if (precio.equals("")) {
+            txt_precio.setBackground(Color.red);
+        }
+        if (cantidad.equals("")) {
+            txt_cantidad.setBackground(Color.red);
+        }
+        if (editorial.equals("")) {
+            txt_editorial.setBackground(Color.red);
+        }
+        if (fechapubli.equals("")) {
+            txt_fechapubli.setBackground(Color.red);
+        }
+        if (paginas.equals("")) {
+            txt_paginas.setBackground(Color.red);
+        }
+        if (idioma.equals("")) {
+            txt_idioma.setBackground(Color.red);
+        }
+        if (isbn.equals("")) {
+            txt_isbn.setBackground(Color.red);
+        }
+        if (descripcion.equals("")) {
+            txt_descripcion.setBackground(Color.red);
+        }
+        if (estante.equals("")) {
+            comboEstantes.setBackground(Color.red);
+        }
+        if (autor.equals("")) {
+            comboAutores.setBackground(Color.red);
+        }
+        if (genero.equals("")) {
+            comboGeneros.setBackground(Color.red);
+        }
+
+    
+    }
+
+    //camposBlancos
+    private void camposBlancos(){
+        txt_titulo.setBackground(Color.white);
+        txt_precio.setBackground(Color.white);
+        txt_cantidad.setBackground(Color.white);
+        txt_editorial.setBackground(Color.white);
+        txt_fechapubli.setBackground(Color.white);
+        txt_paginas.setBackground(Color.white);
+        txt_idioma.setBackground(Color.white);
+        txt_isbn.setBackground(Color.white);
+        txt_descripcion.setBackground(Color.white);
+        comboEstantes.setBackground(Color.white);
+        comboAutores.setBackground(Color.white);
+        comboGeneros.setBackground(Color.white);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Datos;
     private javax.swing.JPanel background;
     private javax.swing.JComboBox<String> comboAutores;
-    private javax.swing.JComboBox<String> comboClientes;
+    private javax.swing.JComboBox<String> comboEstantes;
     private javax.swing.JComboBox<String> comboGeneros;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;

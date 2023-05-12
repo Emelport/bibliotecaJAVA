@@ -1,0 +1,21 @@
+ID,CLIENTE,LIBRO,CANTIDAD,PRECIO,SUBTOTAL,IVA,TOTAL
+1,Elias Melendez,The Great Gatsby,2,100,200,35.20,235.20
+2,Juan Pablo Najera,To Kill a Mockingbird,1,125,125,21.88,146.88
+3,Osman Suastegui,1984,3,97.50,292.50,51.38,343.88
+4,Prueba,Pride and Prejudice,1,89.90,89.90,15.78,105.68
+5,Michael Davis,The Catcher in the Rye,2,112.50,225,39.38,264.38
+6,Sarah Wilson,Harry Potter and the Sorcerer's Stone,4,159.90,639.60,112.67,752.27
+7,David Anderson,To Kill a Mockingbird,1,125,125,21.88,146.88
+8,Emily Taylor,The Great Gatsby,3,100,300,52.80,352.80
+9,Christopher Moore,Animal Farm,2,79.90,159.80,28.14,187.94
+10,Olivia Martinez,Fahrenheit 451,1,92.50,92.50,16.18,108.68
+11,Andrew Thompson,Brave New World,1,105,105,18.42,123.42
+12,Isabella Clark,The Hobbit,2,147.50,295,51.83,346.83
+13,James Adams,To Kill a Mockingbird,1,125,125,21.88,146.88
+14,Sophia Lee,The Great Gatsby,1,100,100,17.60,117.60
+15,Alexander Green,1984,2,97.50,195,34.30,229.30
+16,Natalie Baker,Pride and Prejudice,1,89.90,89.90,15.78,105.68
+17,William Turner,The Catcher in the Rye,3,112.50,337.50,59.38,396.88
+18,Ava Cooper,Harry Potter and the Sorcerer's Stone,1,159.90,159.90,28.14,188.04
+19,Daniel Reed,Fahrenheit 451,2,92.50,185,32.60,217.60
+20,Sophie Campbell,Brave New World,1,105,105,18.42,123.42

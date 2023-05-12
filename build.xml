@@ -10,6 +10,12 @@
 <project name="biblio_cliente" default="default" basedir=".">
     <description>Builds, tests, and runs the project biblio_cliente.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+    <path id="classpath">
+        <fileset dir="lib">
+          <include name="*.jar"/>
+        </fileset>
+    </path>
     <!--
 
     There exist several targets which are by default empty and which can be 

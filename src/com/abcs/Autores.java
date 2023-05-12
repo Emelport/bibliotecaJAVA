@@ -208,6 +208,7 @@ public class Autores extends javax.swing.JInternalFrame {
         String ruta = "/insertar_autor";
         Api a = new Api();
         a.insertar(json, ruta);
+        actualizar();
     }//GEN-LAST:event_btn_anadirActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -229,6 +230,8 @@ public class Autores extends javax.swing.JInternalFrame {
         String ruta = "/modificar_autor";
         Api a = new Api();
         a.modificar(json, ruta);
+        
+        actualizar();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
@@ -236,19 +239,22 @@ public class Autores extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txt_nombreActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        actualizar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void actualizar(){
         // TODO add your handling code here:
+        jComboBox1.removeAllItems();
         Api a = new Api();
         String ruta = "/obtener_autores";
         String datos = a.obtener(ruta);
 
         List<String> autores = biblio_funciones.tratarRequest(datos);
         biblio_funciones.mensaje("Se encontraron "+autores.size()+" Autores.", "Actualizar", 1);
-        jComboBox1.removeAllItems();
         for (String autor : autores) {
             jComboBox1.addItem(autor);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         //Se obtiene el autor del combo box

@@ -13,6 +13,12 @@ import com.consultas.c_Rentas;
 import static java.lang.System.exit;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+//importar jasper report
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.util.JRLoader.*;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  * @author Elias
  */
@@ -62,6 +68,7 @@ public class Principal extends javax.swing.JFrame {
         Consulta1 = new javax.swing.JMenuItem();
         Consulta2 = new javax.swing.JMenuItem();
         Consulta3 = new javax.swing.JMenuItem();
+        Consulta4 = new javax.swing.JMenuItem();
         Salir = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
         SalirF = new javax.swing.JMenuItem();
@@ -228,6 +235,15 @@ public class Principal extends javax.swing.JFrame {
         Consulta3.setText("Localizacion Libros");
         Consultas.add(Consulta3);
 
+        Consulta4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        Consulta4.setText("Ventas");
+        Consulta4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta4ActionPerformed(evt);
+            }
+        });
+        Consultas.add(Consulta4);
+
         jMenuBar1.add(Consultas);
 
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/salida.png"))); // NOI18N
@@ -289,7 +305,6 @@ public class Principal extends javax.swing.JFrame {
         jDesktopPane1.add(v);
         v.setVisible(true);
         v.setLocation(0, 0);
-        v.setSize(1366, 768);
         v.setClosable(true);
         v.setIconifiable(true);
         v.setMaximizable(true);
@@ -384,6 +399,12 @@ public class Principal extends javax.swing.JFrame {
         inicializarFrame(p1);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void Consulta4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta4ActionPerformed
+        // TODO add your handling code here:
+
+     
+    }//GEN-LAST:event_Consulta4ActionPerformed
+
     private void ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         Proveedor proveedores = new Proveedor();
@@ -454,6 +475,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Consulta1;
     private javax.swing.JMenuItem Consulta2;
     private javax.swing.JMenuItem Consulta3;
+    private javax.swing.JMenuItem Consulta4;
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenuItem Libros;
     private javax.swing.JMenuItem Proveedores;

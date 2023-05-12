@@ -4,6 +4,7 @@
  */
 package com.login;
 
+import com.itextpdf.text.pdf.Barcode;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -11,6 +12,10 @@ import java.net.Socket;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import jbarcodebean.JBarcodeBean;
+import net.sourceforge.jbarcodebean.model.Interleaved25;
 
 
 /**
@@ -71,6 +76,44 @@ public class biblio_funciones {
     
     }
     
+    public static ImageIcon generarCodigoBarras(String palabra){
+        //generar codigo de barras
+       JBarcodeBean barcode = new JBarcodeBean();
+       
+        barcode.setCodeType(new Interleaved25());
+        barcode.setCode(palabra);
+        barcode.setCheckDigit(true);
+
+        //generar imagen
+        java.awt.Image img = barcode.draw(new java.awt.image.BufferedImage(300, 300, java.awt.image.BufferedImage.TYPE_INT_RGB));
+        ImageIcon icon = new ImageIcon(img);
+        return icon;
+    }
     
+    public static void GuardarCB(ImageIcon Barras){
+        //Solicitar donde quieres guardar el archivo con un filedialog
+        javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+        fileChooser.setDialogTitle("Guardar imagen");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Imagenes", "jpg", "png", "gif", "bmp"));
+        int seleccion = fileChooser.showSaveDialog(null);
+
+        if (seleccion == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File fichero = fileChooser.getSelectedFile();
+            String ruta = fichero.getAbsolutePath();
+            //guardar imagen
+            try {
+                java.awt.image.BufferedImage bi = new java.awt.image.BufferedImage(Barras.getIconWidth(), Barras.getIconHeight(), java.awt.image.BufferedImage.TYPE_INT_RGB);
+                java.awt.Graphics g = bi.createGraphics();
+                Barras.paintIcon(null, g, 0, 0);
+                g.setColor(java.awt.Color.WHITE);
+                g.drawString(ruta, 10, 20);
+                g.dispose();
+                javax.imageio.ImageIO.write(bi, "jpg", new java.io.File(ruta+".jpg"));
+            } catch (java.io.IOException e) {
+                System.out.println("Error al guardar la imagen");
+            }
+        }
+
+    }
 
 }

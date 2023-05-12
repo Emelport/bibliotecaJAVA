@@ -343,6 +343,7 @@ public class Login extends javax.swing.JFrame {
             formMenu.show();
             this.dispose();
         }
+
     }//GEN-LAST:event_psw_EntryActionPerformed
 
     private void psw_EntryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_psw_EntryFocusLost

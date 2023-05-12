@@ -9,6 +9,8 @@ import com.login.biblio_funciones;
 import java.awt.Color;
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Elias
@@ -85,6 +87,12 @@ public class Tarjetas extends javax.swing.JInternalFrame {
         jLabel3.setText("Telefono:");
 
         txt_id.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_id.setNextFocusableComponent(txt_fecha);
+        txt_id.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                txt_idComponentAdded(evt);
+            }
+        });
 
         txt_telefono.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -128,6 +136,7 @@ public class Tarjetas extends javax.swing.JInternalFrame {
         );
 
         txt_fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txt_fecha.setNextFocusableComponent(ComboClientes);
         txt_fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fechaActionPerformed(evt);
@@ -153,7 +162,7 @@ public class Tarjetas extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(189, Short.MAX_VALUE)
+                .addContainerGap(138, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,13 +183,19 @@ public class Tarjetas extends javax.swing.JInternalFrame {
         );
 
         txt_fechavenc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        txt_fechavenc.setNextFocusableComponent(txt_telefono);
         txt_fechavenc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fechavencActionPerformed(evt);
             }
         });
 
-        ComboClientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboClientes.setNextFocusableComponent(txt_fechavenc);
+        ComboClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboClientesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
@@ -188,15 +203,12 @@ public class Tarjetas extends javax.swing.JInternalFrame {
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DatosLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
             .addGroup(DatosLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(185, 185, 185))
-            .addGroup(DatosLayout.createSequentialGroup()
-                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addGap(258, 258, 258)
+                        .addComponent(jButton3))
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -209,23 +221,25 @@ public class Tarjetas extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosLayout.createSequentialGroup()
-                                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txt_fecha))
-                                .addComponent(ComboClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(DatosLayout.createSequentialGroup()
                                 .addComponent(txt_fechavenc, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(jButton3)))
+                                .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(ComboClientes, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DatosLayout.createSequentialGroup()
+                                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel5)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DatosLayout.setVerticalGroup(
@@ -246,46 +260,40 @@ public class Tarjetas extends javax.swing.JInternalFrame {
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel6)))
-                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(DatosLayout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(txt_fechavenc, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                            .addComponent(jLabel3)))
-                    .addGroup(DatosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txt_fechavenc, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addGap(47, 47, 47))
         );
 
-        background.add(Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 690, 450));
+        background.add(Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 70, 600, 450));
 
         jLabel8.setBackground(new java.awt.Color(0, 102, 153));
         jLabel8.setFont(new java.awt.Font("Roboto Black", 1, 48)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("TARJETAS");
-        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 90));
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 600, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,6 +384,24 @@ public class Tarjetas extends javax.swing.JInternalFrame {
             jComboBox1.addItem(tarjeta);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void ComboClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboClientesActionPerformed
+      
+        
+    }//GEN-LAST:event_ComboClientesActionPerformed
+
+    private void txt_idComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_txt_idComponentAdded
+        // TODO add your handling code here:
+        //Generar codigo de barras con ese id
+        String id = txt_id.getText();
+        //Generar codigo de barras
+        ImageIcon barras = biblio_funciones.generarCodigoBarras(id);
+        //Poner el codigo de barras dentro del jPanel1
+        jLabel8.setIcon(barras);
+        
+        
+
+    }//GEN-LAST:event_txt_idComponentAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
