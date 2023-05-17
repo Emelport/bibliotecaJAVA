@@ -53,7 +53,13 @@ public class Libros extends javax.swing.JInternalFrame {
         for (String string : lista) {
             comboGeneros.addItem(string);
         }
-
+        
+        datos = a.obtener("/obtener_libros");
+        lista = biblio_funciones.tratarRequest(datos);
+        for (String string : lista) {
+            jComboBox1.addItem(string);
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -446,7 +452,7 @@ public class Libros extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Api a = new Api();
-        String ruta = "/obtener_Libros";
+        String ruta = "/obtener_libros";
         String datos = a.obtener(ruta);
 
         List<String> clientes = biblio_funciones.tratarRequest(datos);
@@ -464,7 +470,7 @@ public class Libros extends javax.swing.JInternalFrame {
         String id = Libros.split("_")[0];
         //obtener los datos del cliente con la api
         Api a = new Api();
-        String ruta = "/obtener_Libros/" + id;
+        String ruta = "/obtener_libro/" + id;
         String datos = a.obtener(ruta);
         //separar por --
         String[] datos_separados = datos.split("--");
@@ -472,18 +478,18 @@ public class Libros extends javax.swing.JInternalFrame {
         txt_id.setText(datos_separados[0]);
         txt_titulo.setText(datos_separados[1]);
         txt_precio.setText(datos_separados[2]);
-        txt_cantidad.setText(datos_separados[3]);
+        txt_cantidad.setText(datos_separados[8]);
         txt_editorial.setText(datos_separados[4]);
         txt_fechapubli.setText(datos_separados[5]);
-        txt_paginas.setText(datos_separados[6]);
+        txt_paginas.setText(datos_separados[9]);
         txt_idioma.setText(datos_separados[7]);
-        txt_isbn.setText(datos_separados[8]);   
-        txt_descripcion.setText(datos_separados[9]);
+        txt_isbn.setText(datos_separados[3]);   
+        txt_descripcion.setText(datos_separados[6]);
 
         //Obtener el dato del estante y buscarlo en la api
         //cargar todos los estantes y seleccionar el indice que devuelve la api
-        String estante = datos_separados[10];
-        String ruta_estante = "/obtener_Estantes";
+      /*  String estante = datos_separados[10];
+        String ruta_estante = "/obtener_estantes";
         String datos_estante = a.obtener(ruta_estante);
         String[] estantes_separados = datos_estante.split("--");
         int indice = 0;
@@ -492,12 +498,12 @@ public class Libros extends javax.swing.JInternalFrame {
                 indice = i;
             }
         }
-        comboEstantes.setSelectedIndex(indice);
+        comboEstantes.setSelectedIndex(indice);*/
 
         //Obtener el dato del autor y buscarlo en la api
         //cargar todos los autores y seleccionar el indice que devuelve la api
         String autor = datos_separados[11];
-        String ruta_autor = "/obtener_Autores";
+        String ruta_autor = "/obtener_autores";
         String datos_autor = a.obtener(ruta_autor);
         String[] autores_separados = datos_autor.split("--");
         int indice_autor = 0;
@@ -511,7 +517,7 @@ public class Libros extends javax.swing.JInternalFrame {
         //Obtener el dato del genero y buscarlo en la api
         //cargar todos los generos y seleccionar el indice que devuelve la api
         String genero = datos_separados[12];
-        String ruta_genero = "/obtener_Generos";
+        String ruta_genero = "/obtener_generos";
 
         String datos_genero = a.obtener(ruta_genero);
         String[] generos_separados = datos_genero.split("--");

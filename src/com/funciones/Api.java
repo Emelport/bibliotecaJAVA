@@ -18,7 +18,7 @@ import java.net.http.HttpRequest.BodyPublishers;
  */
 public class Api {
     
-    private  String url_api = "http://localhost:5000";
+    private  String url_api = "http://localhost:5000/";
     HttpClient client;
     public Api(){
         client = HttpClient.newHttpClient();

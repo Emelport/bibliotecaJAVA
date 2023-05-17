@@ -63,7 +63,6 @@ public class Principal extends javax.swing.JFrame {
         Capturas = new javax.swing.JMenu();
         Ventas = new javax.swing.JMenuItem();
         Compras = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         Consultas = new javax.swing.JMenu();
         Consulta1 = new javax.swing.JMenuItem();
         Consulta2 = new javax.swing.JMenuItem();
@@ -116,7 +115,7 @@ public class Principal extends javax.swing.JFrame {
         Abcs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/altas-icon.png"))); // NOI18N
         Abcs.setText("Archivos");
         Abcs.setToolTipText("");
-        Abcs.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Abcs.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Abcs.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Autores.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_DOWN_MASK));
@@ -174,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
         Capturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/capturas-icon.png"))); // NOI18N
         Capturas.setText("  Capturas");
         Capturas.setToolTipText("");
-        Capturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Capturas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Capturas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Ventas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -202,20 +201,12 @@ public class Principal extends javax.swing.JFrame {
         });
         Capturas.add(Compras);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        Capturas.add(jMenuItem2);
-
         jMenuBar1.add(Capturas);
 
         Consultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/reportes-icon.png"))); // NOI18N
         Consultas.setText("Reportes");
         Consultas.setToolTipText("");
-        Consultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Consultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Consultas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         Consulta1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -248,7 +239,7 @@ public class Principal extends javax.swing.JFrame {
 
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/salida.png"))); // NOI18N
         Salir.setText("<-SALIR");
-        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Salir.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -257,6 +248,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         CerrarSesion.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        CerrarSesion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         CerrarSesion.setText("Cerrar Sesion");
         CerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,6 +258,7 @@ public class Principal extends javax.swing.JFrame {
         Salir.add(CerrarSesion);
 
         SalirF.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        SalirF.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         SalirF.setText("Salir");
         SalirF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,11 +324,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void ComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprasActionPerformed
         // TODO add your handling code here:
-        Compras v = new Compras();
+        Compras_2 v = new Compras_2();
         jDesktopPane1.add(v);
         v.setVisible(true);
         v.setLocation(0, 0);
-        v.setSize(1366, 768);
         v.setClosable(true);
         v.setIconifiable(true);
         v.setMaximizable(true);
@@ -392,12 +384,6 @@ public class Principal extends javax.swing.JFrame {
                exit(0);
         }
     }//GEN-LAST:event_SalirFActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-         Compras p1 = new Compras();
-        inicializarFrame(p1);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void Consulta4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta4ActionPerformed
         // TODO add your handling code here:
@@ -486,6 +472,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }

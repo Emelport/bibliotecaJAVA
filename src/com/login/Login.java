@@ -227,10 +227,10 @@ public class Login extends javax.swing.JFrame {
         background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 570, 610));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 48)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Z003", 1, 48)); // NOI18N
         jLabel6.setText("CoreBook");
         jLabel6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 250, 70));
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 210, 70));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
