@@ -8,6 +8,8 @@ import com.funciones.Api;
 import com.login.biblio_funciones;
 import java.awt.Color;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -34,15 +36,8 @@ public class Libros extends javax.swing.JInternalFrame {
         Api a = new Api();
 
         //Estantes
-        String datos = a.obtener("/obtener_clientes");
+        String datos = a.obtener("/obtener_autores");
         List<String> lista = biblio_funciones.tratarRequest(datos);
-        for (String string : lista) {
-            comboEstantes.addItem(string);
-        }
-
-        //Autores
-        datos = a.obtener("/obtener_autores");
-        lista = biblio_funciones.tratarRequest(datos);
         for (String string : lista) {
             comboAutores.addItem(string);
         }
@@ -52,13 +47,7 @@ public class Libros extends javax.swing.JInternalFrame {
         lista = biblio_funciones.tratarRequest(datos);
         for (String string : lista) {
             comboGeneros.addItem(string);
-        }
-        
-        datos = a.obtener("/obtener_libros");
-        lista = biblio_funciones.tratarRequest(datos);
-        for (String string : lista) {
-            jComboBox1.addItem(string);
-        }
+        }  
         
     }
     /**
@@ -234,6 +223,8 @@ public class Libros extends javax.swing.JInternalFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        comboEstantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -455,11 +446,11 @@ public class Libros extends javax.swing.JInternalFrame {
         String ruta = "/obtener_libros";
         String datos = a.obtener(ruta);
 
-        List<String> clientes = biblio_funciones.tratarRequest(datos);
-        biblio_funciones.mensaje("Se encontraron "+clientes.size()+" Libros Registrados.", "Consulta", 1);
-        comboEstantes.removeAllItems();
-        for (String cliente : clientes) {
-            comboEstantes.addItem(cliente);
+        List<String> libros = biblio_funciones.tratarRequest(datos);
+        biblio_funciones.mensaje("Se encontraron "+libros.size()+" Libros Registrados.", "Consulta", 1);
+        jComboBox1.removeAllItems();
+        for (String libro : libros) {
+            jComboBox1.addItem(libro);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -477,12 +468,12 @@ public class Libros extends javax.swing.JInternalFrame {
         //poner los datos en los campos de texto
         txt_id.setText(datos_separados[0]);
         txt_titulo.setText(datos_separados[1]);
-        txt_precio.setText(datos_separados[2]);
+        txt_precio.setText(datos_separados[5]);
         txt_cantidad.setText(datos_separados[8]);
         txt_editorial.setText(datos_separados[4]);
-        txt_fechapubli.setText(datos_separados[5]);
+        txt_fechapubli.setText(datos_separados[7]);
         txt_paginas.setText(datos_separados[9]);
-        txt_idioma.setText(datos_separados[7]);
+        txt_idioma.setText(datos_separados[2]);
         txt_isbn.setText(datos_separados[3]);   
         txt_descripcion.setText(datos_separados[6]);
 
@@ -544,40 +535,53 @@ public class Libros extends javax.swing.JInternalFrame {
         String idioma = txt_idioma.getText();
         String isbn = txt_isbn.getText();
         String descripcion = txt_descripcion.getText();
+        //Separar el valor del combo box para obtener el id del autor y del genero
         String estante = comboEstantes.getSelectedItem().toString();
         String autor = comboAutores.getSelectedItem().toString();
+        String id_autor = autor.split("_")[0];
         String genero = comboGeneros.getSelectedItem().toString();
+        String id_genero = genero.split("_")[0];
         //Si alguno de esos campos esta vacia poner camposRojos
         if(titulo.equals("") || precio.equals("") || cantidad.equals("") || editorial.equals("") || fechapubli.equals("") || paginas.equals("") || idioma.equals("") || isbn.equals("") || descripcion.equals("")){
-            camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, autor, genero);
+            camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, id_autor, id_genero);
         }else{
+             //Validar que la fecha este en el formato correcto dd/mm/yyyy con una expresion regular
+            String regex = "\\d{4}/\\d{2}/\\d{2}";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(fechapubli);
+            if(!matcher.matches()){
+                biblio_funciones.mensaje("La fecha debe estar en el formato yyyy/mm/dd", "Error", 2);
+            }
             camposBlancos();
             //Si no esta vacia enviar los datos a la api
-            Api a = new Api();
-            String ruta="/insertar_libro";
-            String json= "{"
-                + "\"titulo\":\""+titulo+"\","
-                + "\"precioxdia\":\""+precio+"\","
-                + "\"num_ejemplares\":\""+cantidad+"\","
-                + "\"editorial\":\""+editorial+"\","
-                + "\"fecha_publicacion\":\""+fechapubli+"\","
-                + "\"num_paginas\":\""+paginas+"\","
-                + "\"idioma\":\""+idioma+"\","
-                + "\"isbn\":\""+isbn+"\","
-                + "\"descripcion\":\""+descripcion+"\","
-                + "\"id_estante\":\""+estante+"\","
-                + "\"id_autor\":\""+autor+"\","
-                + "\"id_genero\":\""+genero+"\""
-            + "}";
+            //Segur este orden     .format(titulo, fecha_publicacion, is    bn, editorial, idioma, descripcion, num_paginas, num_ejemplares, id_estante, id_autor, id_genero, precioxdia))
 
-            a.insertar(ruta, json);
+            Api a = new Api();
+            String ruta="insertar_libro";
+            String json= "{"+
+                "\"titulo\":\""+titulo+"\","+
+                "\"fecha_publicacion\":\""+fechapubli+"\","+
+                "\"isbn\":\""+isbn+"\","+
+                "\"editorial\":\""+editorial+"\","+
+                "\"idioma\":\""+idioma+"\","+
+                "\"descripcion\":\""+descripcion+"\","+
+                "\"num_paginas\":\""+paginas+"\","+
+                "\"num_ejemplares\":\""+cantidad+"\","+
+                "\"id_estante\":\""+estante+"\","+
+                "\"id_autor\":\""+autor+"\","+
+                "\"id_genero\":\""+genero+"\","+
+                "\"precioxdia\":\""+precio+"\""+
+            "}";
+
+            a.insertar(json, ruta);
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        //Anadir un nuevo cliente
+        //Anadir un nuevo Libro
+        String id = txt_id.getText();
         String titulo = txt_titulo.getText();
         String precio = txt_precio.getText();
         String cantidad = txt_cantidad.getText();
@@ -589,31 +593,43 @@ public class Libros extends javax.swing.JInternalFrame {
         String descripcion = txt_descripcion.getText();
         String estante = comboEstantes.getSelectedItem().toString();
         String autor = comboAutores.getSelectedItem().toString();
+        autor = autor.split("_")[0];
         String genero = comboGeneros.getSelectedItem().toString();
+        genero = genero.split("_")[0];
         //Si alguno de esos campos esta vacia poner camposRojos
         if(titulo.equals("") || precio.equals("") || cantidad.equals("") || editorial.equals("") || fechapubli.equals("") || paginas.equals("") || idioma.equals("") || isbn.equals("") || descripcion.equals("")){
             camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, autor, genero);
         }else{
+            //Validar que la fecha este en el formato correcto dd/mm/yyyy con una expresion regular
+            String regex = "\\d{4}/\\d{2}/\\d{2}";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(fechapubli);
+            if(!matcher.matches()){
+                biblio_funciones.mensaje("La fecha debe estar en el formato yyyy/mm/dd", "Error", 2);
+            }
             camposBlancos();
             //Si no esta vacia enviar los datos a la api
-            Api a = new Api();
-            String ruta="insertar_libros";
-            String json= "{"
-                + "\"titulo\":\""+titulo+"\","
-                + "\"precio\":\""+precio+"\","
-                + "\"cantidad\":\""+cantidad+"\","
-                + "\"editorial\":\""+editorial+"\","
-                + "\"fechapubli\":\""+fechapubli+"\","
-                + "\"paginas\":\""+paginas+"\","
-                + "\"idioma\":\""+idioma+"\","
-                + "\"isbn\":\""+isbn+"\","
-                + "\"descripcion\":\""+descripcion+"\","
-                + "\"estante\":\""+estante+"\","
-                + "\"autor\":\""+autor+"\","
-                + "\"genero\":\""+genero+"\""
-            + "}";
+            //Segur este orden     .format(titulo, fecha_publicacion, is    bn, editorial, idioma, descripcion, num_paginas, num_ejemplares, id_estante, id_autor, id_genero, precioxdia))
 
-            a.modificar(ruta, json);
+            Api a = new Api();
+            String ruta="modificar_libro";
+            String json= "{"+
+                "\"id_libro\":\""+id+"\","+
+                "\"titulo\":\""+titulo+"\","+
+                "\"fecha_publicacion\":\""+fechapubli+"\","+
+                "\"isbn\":\""+isbn+"\","+
+                "\"editorial\":\""+editorial+"\","+
+                "\"idioma\":\""+idioma+"\","+
+                "\"descripcion\":\""+descripcion+"\","+
+                "\"num_paginas\":\""+paginas+"\","+
+                "\"num_ejemplares\":\""+cantidad+"\","+
+                "\"id_estante\":\""+estante+"\","+
+                "\"id_autor\":\""+autor+"\","+
+                "\"id_genero\":\""+genero+"\","+
+                "\"precioxdia\":\""+precio+"\""+
+            "}";
+
+            a.modificar(json, ruta);
 
         }
     }//GEN-LAST:event_jButton3ActionPerformed
