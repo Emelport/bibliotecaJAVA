@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Ventas1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df013db5-f76e-44d3-b0df-bcbc46d93160">
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ID" class="java.lang.String"/>
+	<field name="CLIENTE" class="java.lang.String"/>
+	<field name="LIBRO" class="java.lang.String"/>
+	<field name="TOTAL" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="167" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="802" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Reporte de Ventas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="350" y="62" width="196" height="22" uuid="f6a78448-8260-4445-a9e0-e3fb53b080d9"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA["Parametros"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="94" width="611" height="42" uuid="8240065e-64b6-4170-b5d9-6341598e7b35"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[En este reporte se incluyen las ventas en el periodo indicado.]]></text>
+			</staticText>
+			<image onErrorType="Icon">
+				<reportElement x="0" y="0" width="172" height="167" uuid="79f65410-416e-4864-a6f0-627dc0e897b3"/>
+				<imageExpression><![CDATA["src/com/imgs/logo_con_fondo-removebg-preview.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="802" height="1" uuid="e9d2002a-c8ee-4649-a258-640dad29110c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="160" height="32" uuid="4106bfda-8211-43a2-9a1b-b46f1171b286"/>
+				<textElement>
+					<font fontName="Britannic Bold" size="22"/>
+				</textElement>
+				<text><![CDATA[	ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="10" width="250" height="32" uuid="65bb0cf0-b67a-479c-b33b-cd36bd9e5ad2"/>
+				<textElement>
+					<font fontName="Britannic Bold" size="22"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="10" width="220" height="32" uuid="7d113e3d-1ca2-442a-aeda-5cdb5bf03dc7"/>
+				<textElement>
+					<font fontName="Britannic Bold" size="22"/>
+				</textElement>
+				<text><![CDATA[LIBRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="630" y="10" width="172" height="32" uuid="a8932806-4195-4f57-8a1c-c90d4bd99f9c"/>
+				<textElement>
+					<font fontName="Britannic Bold" size="22"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField textAdjust="StretchHeight">
+				<reportElement x="40" y="0" width="120" height="30" uuid="bea5999d-acec-4f4a-9046-bd172b1a721b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7c36ae01-04c3-49ec-a8bb-cfc2ab271848"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="160" y="0" width="250" height="30" uuid="f2dd9b8f-f93c-4ace-b19c-a87e3c00c62e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b5d5dfb9-6811-4e2d-954d-6023c213d5a0"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTE}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="410" y="0" width="220" height="30" uuid="55e99c28-8576-4216-b07d-ac82701ef7eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f50aa24f-a905-4a2c-86e3-f3ea4be9b876"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LIBRO}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="630" y="0" width="172" height="30" uuid="eec12412-b4a2-4740-bc9a-1974250091f3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="37040e74-45b3-4686-b81e-3cfaba2bb669"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bodoni MT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="52" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="fa5e88d5-a011-4e32-8f12-ce923f903111"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="802" height="1" uuid="8a1ca57f-cbed-4d6d-ac34-b49e7a4cb641">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="5d8169bd-4a75-48c8-8a68-6d3ad5ba9402"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="e5e27efa-b599-499b-9ca3-848cb511cb7b"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="18cfe1ca-f7d6-48b0-9827-28578b42a5e0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fbce24bb-3cb1-44a3-8eec-8c067ddbe5b5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -9,15 +9,11 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import com.abcs.*;
 import com.capturas.*;
-import com.consultas.c_Rentas;
 import static java.lang.System.exit;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 //importar jasper report
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.util.JRLoader.*;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 /**
  * @author Elias
@@ -224,6 +220,11 @@ public class Principal extends javax.swing.JFrame {
 
         Consulta3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Consulta3.setText("Localizacion Libros");
+        Consulta3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta3ActionPerformed(evt);
+            }
+        });
         Consultas.add(Consulta3);
 
         Consulta4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -313,8 +314,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void Consulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta1ActionPerformed
         // TODO add your handling code here:
-        c_Rentas rentas = new c_Rentas();
-        inicializarFrame(rentas);
+       String res = biblio_funciones.pedirString("Por Favor Introduzca un Rango de Fechas (yyyy/mm/dd,yyyy/mm/dd) \n Ej. 2022/01/01,2022/01/31 ", "REPORTE DE RENTAS");
+       biblio_funciones.cargarReporte(res);
     }//GEN-LAST:event_Consulta1ActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
@@ -369,7 +370,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void CerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CerrarSesionActionPerformed
         // TODO add your handling code here:
-           int res= biblio_funciones.mensajeDecision("Deseas Cerrar la sesion actual?", "Cierre de Sesion", "si", "no");
+           int res= biblio_funciones.mensajeDecision("Deseas Cerrar la sesion actual?", "CIERRE DE SESION", "SI", "NO");
         if (res==0) {
             this.dispose();
             Login lo = new Login();
@@ -390,6 +391,12 @@ public class Principal extends javax.swing.JFrame {
 
      
     }//GEN-LAST:event_Consulta4ActionPerformed
+
+    private void Consulta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta3ActionPerformed
+        //mensaje con combo para seleccionar
+      
+
+    }//GEN-LAST:event_Consulta3ActionPerformed
 
     private void ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
