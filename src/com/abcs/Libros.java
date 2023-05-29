@@ -7,6 +7,9 @@ package com.abcs;
 import com.funciones.Api;
 import com.login.biblio_funciones;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,7 +82,6 @@ public class Libros extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         txt_id = new javax.swing.JTextField();
         txt_titulo = new javax.swing.JTextField();
-        txt_fechapubli = new javax.swing.JTextField();
         txt_isbn = new javax.swing.JTextField();
         txt_editorial = new javax.swing.JTextField();
         txt_idioma = new javax.swing.JTextField();
@@ -96,6 +98,7 @@ public class Libros extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
+        txt_fecha = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -269,6 +272,8 @@ public class Libros extends javax.swing.JInternalFrame {
                 .addGap(15, 15, 15))
         );
 
+        txt_fecha.setModel(new javax.swing.SpinnerDateModel());
+
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
         DatosLayout.setHorizontalGroup(
@@ -300,7 +305,7 @@ public class Libros extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(txt_fechapubli, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(DatosLayout.createSequentialGroup()
@@ -351,13 +356,15 @@ public class Libros extends javax.swing.JInternalFrame {
                             .addComponent(txt_editorial, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
-                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_idioma, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(txt_fechapubli, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(txt_fecha)))
+                    .addComponent(jLabel6))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createSequentialGroup()
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -366,7 +373,7 @@ public class Libros extends javax.swing.JInternalFrame {
                             .addComponent(txt_paginas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(txt_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_cantidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
@@ -456,7 +463,6 @@ public class Libros extends javax.swing.JInternalFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        
         String Libros = jComboBox1.getSelectedItem().toString();
         String id = Libros.split("_")[0];
         //obtener los datos del cliente con la api
@@ -471,56 +477,25 @@ public class Libros extends javax.swing.JInternalFrame {
         txt_precio.setText(datos_separados[5]);
         txt_cantidad.setText(datos_separados[8]);
         txt_editorial.setText(datos_separados[4]);
-        txt_fechapubli.setText(datos_separados[7]);
-        txt_paginas.setText(datos_separados[9]);
-        txt_idioma.setText(datos_separados[2]);
+        txt_paginas.setText(datos_separados[7]);
+        txt_idioma.setText(datos_separados[5]);
         txt_isbn.setText(datos_separados[3]);   
         txt_descripcion.setText(datos_separados[6]);
-
-        //Obtener el dato del estante y buscarlo en la api
-        //cargar todos los estantes y seleccionar el indice que devuelve la api
-      /*  String estante = datos_separados[10];
-        String ruta_estante = "/obtener_estantes";
-        String datos_estante = a.obtener(ruta_estante);
-        String[] estantes_separados = datos_estante.split("--");
-        int indice = 0;
-        for (int i = 0; i < estantes_separados.length; i++) {
-            if (estantes_separados[i].equals(estante)) {
-                indice = i;
-            }
+        comboEstantes.setSelectedIndex(Integer.parseInt(datos_separados[9]));
+        comboAutores.setSelectedIndex(Integer.parseInt(datos_separados[10]));
+        comboGeneros.setSelectedIndex(Integer.parseInt(datos_separados[11]));
+        txt_precio.setText(datos_separados[12]);
+        
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = null;
+        try {
+            fecha = formato.parse(datos_separados[2]);
+        } catch (ParseException ex) {
+            biblio_funciones.mensaje(ex.toString(), "ERROR", 1);
         }
-        comboEstantes.setSelectedIndex(indice);*/
+        
+        txt_fecha.setValue(fecha);
 
-        //Obtener el dato del autor y buscarlo en la api
-        //cargar todos los autores y seleccionar el indice que devuelve la api
-        String autor = datos_separados[11];
-        String ruta_autor = "/obtener_autores";
-        String datos_autor = a.obtener(ruta_autor);
-        String[] autores_separados = datos_autor.split("--");
-        int indice_autor = 0;
-        for (int i = 0; i < autores_separados.length; i++) {
-            if (autores_separados[i].equals(autor)) {
-                indice_autor = i;
-            }
-        }
-        comboAutores.setSelectedIndex(indice_autor);
-
-        //Obtener el dato del genero y buscarlo en la api
-        //cargar todos los generos y seleccionar el indice que devuelve la api
-        String genero = datos_separados[12];
-        String ruta_genero = "/obtener_generos";
-
-        String datos_genero = a.obtener(ruta_genero);
-        String[] generos_separados = datos_genero.split("--");
-        int indice_genero = 0;
-        for (int i = 0; i < generos_separados.length; i++) {
-            if (generos_separados[i].equals(genero)) {
-                indice_genero = i;
-            }
-        }
-        comboGeneros.setSelectedIndex(indice_genero);
-
-      
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -530,34 +505,31 @@ public class Libros extends javax.swing.JInternalFrame {
         String precio = txt_precio.getText();
         String cantidad = txt_cantidad.getText();
         String editorial = txt_editorial.getText();
-        String fechapubli = txt_fechapubli.getText();
         String paginas = txt_paginas.getText();
         String idioma = txt_idioma.getText();
         String isbn = txt_isbn.getText();
         String descripcion = txt_descripcion.getText();
         //Separar el valor del combo box para obtener el id del autor y del genero
         String estante = comboEstantes.getSelectedItem().toString();
+        String id_estante= estante.split("_")[0];
         String autor = comboAutores.getSelectedItem().toString();
         String id_autor = autor.split("_")[0];
         String genero = comboGeneros.getSelectedItem().toString();
         String id_genero = genero.split("_")[0];
+                //poner la fecha en el Jspinner txt_fecha
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String fechapubli = formato.format(txt_fecha.getValue());
+     
         //Si alguno de esos campos esta vacia poner camposRojos
         if(titulo.equals("") || precio.equals("") || cantidad.equals("") || editorial.equals("") || fechapubli.equals("") || paginas.equals("") || idioma.equals("") || isbn.equals("") || descripcion.equals("")){
             camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, id_autor, id_genero);
         }else{
-             //Validar que la fecha este en el formato correcto dd/mm/yyyy con una expresion regular
-            String regex = "\\d{4}/\\d{2}/\\d{2}";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(fechapubli);
-            if(!matcher.matches()){
-                biblio_funciones.mensaje("La fecha debe estar en el formato yyyy/mm/dd", "Error", 2);
-            }
+
             camposBlancos();
             //Si no esta vacia enviar los datos a la api
             //Segur este orden     .format(titulo, fecha_publicacion, is    bn, editorial, idioma, descripcion, num_paginas, num_ejemplares, id_estante, id_autor, id_genero, precioxdia))
-
             Api a = new Api();
-            String ruta="insertar_libro";
+            String ruta="/insertar_libro";
             String json= "{"+
                 "\"titulo\":\""+titulo+"\","+
                 "\"fecha_publicacion\":\""+fechapubli+"\","+
@@ -567,50 +539,50 @@ public class Libros extends javax.swing.JInternalFrame {
                 "\"descripcion\":\""+descripcion+"\","+
                 "\"num_paginas\":\""+paginas+"\","+
                 "\"num_ejemplares\":\""+cantidad+"\","+
-                "\"id_estante\":\""+estante+"\","+
-                "\"id_autor\":\""+autor+"\","+
-                "\"id_genero\":\""+genero+"\","+
+                "\"id_estante\":\""+id_estante+"\","+
+                "\"id_autor\":\""+id_autor+"\","+
+                "\"id_genero\":\""+id_genero+"\","+
                 "\"precioxdia\":\""+precio+"\""+
             "}";
+               biblio_funciones.mensaje(json,"FECHA",1);
 
             a.insertar(json, ruta);
-
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         //Anadir un nuevo Libro
+       //Anadir un nuevo cliente
         String id = txt_id.getText();
         String titulo = txt_titulo.getText();
         String precio = txt_precio.getText();
         String cantidad = txt_cantidad.getText();
         String editorial = txt_editorial.getText();
-        String fechapubli = txt_fechapubli.getText();
         String paginas = txt_paginas.getText();
         String idioma = txt_idioma.getText();
         String isbn = txt_isbn.getText();
         String descripcion = txt_descripcion.getText();
+        //Separar el valor del combo box para obtener el id del autor y del genero
         String estante = comboEstantes.getSelectedItem().toString();
+        estante= estante.split("_")[0];
         String autor = comboAutores.getSelectedItem().toString();
         autor = autor.split("_")[0];
         String genero = comboGeneros.getSelectedItem().toString();
         genero = genero.split("_")[0];
+                //poner la fecha en el Jspinner txt_fecha
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String fechapubli = formato.format(txt_fecha.getValue());
+     
+        
         //Si alguno de esos campos esta vacia poner camposRojos
         if(titulo.equals("") || precio.equals("") || cantidad.equals("") || editorial.equals("") || fechapubli.equals("") || paginas.equals("") || idioma.equals("") || isbn.equals("") || descripcion.equals("")){
             camposRojos(titulo, precio, cantidad, editorial, fechapubli, paginas, idioma, isbn, descripcion, estante, autor, genero);
         }else{
             //Validar que la fecha este en el formato correcto dd/mm/yyyy con una expresion regular
-            String regex = "\\d{4}/\\d{2}/\\d{2}";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(fechapubli);
-            if(!matcher.matches()){
-                biblio_funciones.mensaje("La fecha debe estar en el formato yyyy/mm/dd", "Error", 2);
-            }
             camposBlancos();
             //Si no esta vacia enviar los datos a la api
             //Segur este orden     .format(titulo, fecha_publicacion, is    bn, editorial, idioma, descripcion, num_paginas, num_ejemplares, id_estante, id_autor, id_genero, precioxdia))
-
             Api a = new Api();
             String ruta="modificar_libro";
             String json= "{"+
@@ -650,7 +622,7 @@ public class Libros extends javax.swing.JInternalFrame {
             txt_editorial.setBackground(Color.red);
         }
         if (fechapubli.equals("")) {
-            txt_fechapubli.setBackground(Color.red);
+            txt_fecha.setBackground(Color.red);
         }
         if (paginas.equals("")) {
             txt_paginas.setBackground(Color.red);
@@ -683,7 +655,7 @@ public class Libros extends javax.swing.JInternalFrame {
         txt_precio.setBackground(Color.white);
         txt_cantidad.setBackground(Color.white);
         txt_editorial.setBackground(Color.white);
-        txt_fechapubli.setBackground(Color.white);
+        txt_fecha.setBackground(Color.white);
         txt_paginas.setBackground(Color.white);
         txt_idioma.setBackground(Color.white);
         txt_isbn.setBackground(Color.white);
@@ -727,7 +699,7 @@ public class Libros extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextField txt_descripcion;
     private javax.swing.JTextField txt_editorial;
-    private javax.swing.JTextField txt_fechapubli;
+    private javax.swing.JSpinner txt_fecha;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_idioma;
     private javax.swing.JTextField txt_isbn;

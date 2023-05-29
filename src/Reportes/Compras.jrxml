@@ -15,8 +15,8 @@
 		<![CDATA[]]>
 	</queryString>
 	<field name="ID" class="java.lang.String"/>
-	<field name="CLIENTE" class="java.lang.String"/>
-	<field name="LIBRO" class="java.lang.String"/>
+	<field name="PROVEEDOR" class="java.lang.String"/>
+	<field name="PRODUCTO" class="java.lang.String"/>
 	<field name="TOTAL" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -26,7 +26,7 @@
 			<staticText>
 				<reportElement style="Title" x="0" y="0" width="802" height="62" uuid="bc1ce1da-8232-46ea-be55-cec4abb986dd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Reporte de Ventas]]></text>
+				<text><![CDATA[Reporte de Compras]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="SubTitle" x="350" y="62" width="196" height="22" uuid="f6a78448-8260-4445-a9e0-e3fb53b080d9"/>
@@ -73,14 +73,14 @@
 				<textElement>
 					<font fontName="Britannic Bold" size="22"/>
 				</textElement>
-				<text><![CDATA[CLIENTE]]></text>
+				<text><![CDATA[PROVEEDOR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="410" y="10" width="220" height="32" uuid="7d113e3d-1ca2-442a-aeda-5cdb5bf03dc7"/>
 				<textElement>
 					<font fontName="Britannic Bold" size="22"/>
 				</textElement>
-				<text><![CDATA[LIBRO]]></text>
+				<text><![CDATA[CONCEPTO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="630" y="10" width="172" height="32" uuid="a8932806-4195-4f57-8a1c-c90d4bd99f9c"/>
@@ -109,7 +109,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Bodoni MT" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{CLIENTE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PROVEEDOR}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement x="410" y="0" width="220" height="30" uuid="55e99c28-8576-4216-b07d-ac82701ef7eb">
@@ -118,7 +118,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Bodoni MT" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{LIBRO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PRODUCTO}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
 				<reportElement x="630" y="0" width="172" height="30" uuid="eec12412-b4a2-4740-bc9a-1974250091f3">

@@ -99,23 +99,7 @@ public class biblio_funciones {
         return ruta;
     }
     
-    public void cargarReporte(String parametro){
-        
-        Api a = new Api();
-        
-       try {
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/Reportes/Ventas1.jasper"));
-            JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, rentasDataSource.getDataSource());
-            JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
-            jasperViewer.setTitle("Reporte de ventas");
-            jasperViewer.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            jasperViewer.setVisible(true);
-
-
-       } catch (JRException e) {
-           e.getMessage();
-       }
-    }
+  
     //Dialog que pide un string
     public static String pedirString(String mensaje, String titulo){
         String respuesta = javax.swing.JOptionPane.showInputDialog(null, mensaje, titulo, 3);

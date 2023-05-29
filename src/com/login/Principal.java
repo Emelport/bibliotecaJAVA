@@ -4,14 +4,24 @@
  */
 package com.login;
 
+import Reportes.rentasDataSource;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import com.abcs.*;
 import com.capturas.*;
+import com.funciones.Api;
+import com.consultas.*;
 import static java.lang.System.exit;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.WindowConstants;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 //importar jasper report
 
 
@@ -60,9 +70,7 @@ public class Principal extends javax.swing.JFrame {
         Ventas = new javax.swing.JMenuItem();
         Compras = new javax.swing.JMenuItem();
         Consultas = new javax.swing.JMenu();
-        Consulta1 = new javax.swing.JMenuItem();
-        Consulta2 = new javax.swing.JMenuItem();
-        Consulta3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Consulta4 = new javax.swing.JMenuItem();
         Salir = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
@@ -204,31 +212,23 @@ public class Principal extends javax.swing.JFrame {
         Consultas.setToolTipText("");
         Consultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Consultas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-
-        Consulta1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Consulta1.setText("Rentas");
-        Consulta1.addActionListener(new java.awt.event.ActionListener() {
+        Consultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta1ActionPerformed(evt);
+                ConsultasActionPerformed(evt);
             }
         });
-        Consultas.add(Consulta1);
 
-        Consulta2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Consulta2.setText("Compras");
-        Consultas.add(Consulta2);
-
-        Consulta3.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Consulta3.setText("Localizacion Libros");
-        Consulta3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/editar.png"))); // NOI18N
+        jMenuItem1.setText("Consultas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta3ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        Consultas.add(Consulta3);
+        Consultas.add(jMenuItem1);
 
         Consulta4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Consulta4.setText("Ventas");
         Consulta4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Consulta4ActionPerformed(evt);
@@ -312,12 +312,6 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_VentasActionPerformed
 
-    private void Consulta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta1ActionPerformed
-        // TODO add your handling code here:
-       String res = biblio_funciones.pedirString("Por Favor Introduzca un Rango de Fechas (yyyy/mm/dd,yyyy/mm/dd) \n Ej. 2022/01/01,2022/01/31 ", "REPORTE DE RENTAS");
-       biblio_funciones.cargarReporte(res);
-    }//GEN-LAST:event_Consulta1ActionPerformed
-
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
           // TODO add your handling code here:
 
@@ -392,11 +386,16 @@ public class Principal extends javax.swing.JFrame {
      
     }//GEN-LAST:event_Consulta4ActionPerformed
 
-    private void Consulta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta3ActionPerformed
-        //mensaje con combo para seleccionar
-      
+    private void ConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultasActionPerformed
+        // TODO add your handling code here:
+    
+        
+    }//GEN-LAST:event_ConsultasActionPerformed
 
-    }//GEN-LAST:event_Consulta3ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Consultas cons = new Consultas();
+        cons.show();       
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
@@ -465,9 +464,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JMenuItem Clientes;
     private javax.swing.JMenuItem Compras;
-    private javax.swing.JMenuItem Consulta1;
-    private javax.swing.JMenuItem Consulta2;
-    private javax.swing.JMenuItem Consulta3;
     private javax.swing.JMenuItem Consulta4;
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenuItem Libros;
@@ -479,5 +475,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }

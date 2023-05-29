@@ -7,6 +7,9 @@ package com.abcs;
 import com.funciones.Api;
 import com.login.biblio_funciones;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -90,11 +93,11 @@ public class Clientes extends javax.swing.JInternalFrame {
         btn_modificar = new javax.swing.JButton();
         btn_anadir = new javax.swing.JButton();
         txt_nombre = new javax.swing.JTextField();
-        txt_fecha = new javax.swing.JFormattedTextField();
         txt_id = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
+        txt_fecha = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -244,13 +247,6 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
         });
 
-        txt_fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fechaActionPerformed(evt);
-            }
-        });
-
         txt_id.setNextFocusableComponent(txt_fecha);
         txt_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,6 +275,8 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
         });
 
+        txt_fecha.setModel(new javax.swing.SpinnerDateModel());
+
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
         DatosLayout.setHorizontalGroup(
@@ -304,7 +302,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGap(18, 18, 18)
-                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,7 +312,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel5)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txt_fecha)))))
+                                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -326,8 +324,8 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_id, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(txt_fecha))
+                    .addComponent(txt_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(txt_fecha, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
@@ -401,8 +399,10 @@ public class Clientes extends javax.swing.JInternalFrame {
         String cliente_direccion = txt_direccion.getText();
         String cliente_email = txt_email.getText();
         String cliente_telefono = txt_telefono.getText();
-        String cliente_fecha = txt_fecha.getText();
-        
+        //Sacar la fecha del Jspiner con formato yyyy-MM-dd 00:00:00
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String cliente_fecha = formato.format(txt_fecha.getValue());
+
         //Validar campos vacios, si alguno esta vacio poner el campo de color rojo
         if(cliente_nombre.isEmpty() || cliente_direccion.isEmpty() || cliente_email.isEmpty() || cliente_telefono.isEmpty()){
             camposRojos(cliente_nombre, cliente_direccion, cliente_email, cliente_telefono);
@@ -420,16 +420,12 @@ public class Clientes extends javax.swing.JInternalFrame {
             Api a = new Api();
             a.insertar(json, ruta);
         }
-     
+        actualizar();
     }//GEN-LAST:event_btn_anadirActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
-
-    private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_fechaActionPerformed
 
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
         // TODO add your handling code here:
@@ -463,7 +459,15 @@ public class Clientes extends javax.swing.JInternalFrame {
         txt_direccion.setText(datos_separados[2]);
         txt_email.setText(datos_separados[4]);
         txt_telefono.setText(datos_separados[5]);
-        txt_fecha.setText(datos_separados[3]);
+        //poner la fecha en el Jspinner txt_fecha
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = null;
+        try {
+            fecha = formato.parse(datos_separados[3]);
+        } catch (ParseException ex) {
+            biblio_funciones.mensaje(ex.toString(), "ERROR", 1);
+        }
+        txt_fecha.setValue(fecha);
         
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
@@ -493,7 +497,12 @@ public class Clientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jPanel3MouseExited
 
     private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
-        Api a = new Api();
+      actualizar();
+    }//GEN-LAST:event_actualizarActionPerformed
+    
+    private void actualizar()
+    {
+          Api a = new Api();
         String ruta = "/obtener_clientes";
         String datos = a.obtener(ruta);
 
@@ -503,8 +512,8 @@ public class Clientes extends javax.swing.JInternalFrame {
         for (String cliente : clientes) {
             jComboBox1.addItem(cliente);
         }
-    }//GEN-LAST:event_actualizarActionPerformed
-
+    }
+    
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         // TODO add your handling code here:
         //Obtener los datos de los campos de texto
@@ -530,7 +539,8 @@ public class Clientes extends javax.swing.JInternalFrame {
             Api a = new Api();
             a.modificar(json, ruta);
         }
-    
+        
+        actualizar();
     }//GEN-LAST:event_btn_modificarActionPerformed
 
 
@@ -554,7 +564,7 @@ public class Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_email;
-    private javax.swing.JFormattedTextField txt_fecha;
+    private javax.swing.JSpinner txt_fecha;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;

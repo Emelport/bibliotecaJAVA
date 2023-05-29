@@ -7,6 +7,9 @@ package com.abcs;
 import com.funciones.Api;
 import com.login.biblio_funciones;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -44,14 +47,12 @@ public class Proveedor extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         txt_nombre = new javax.swing.JTextField();
-        txt_fecha = new javax.swing.JFormattedTextField();
         txt_id = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
         txt_direccion = new javax.swing.JTextField();
@@ -95,13 +96,9 @@ public class Proveedor extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel5.setText("Fecha:");
-
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel6.setText("Nombre:");
+        jLabel6.setText("Razon Social:");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -152,13 +149,6 @@ public class Proveedor extends javax.swing.JInternalFrame {
             }
         });
 
-        txt_fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        txt_fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_fechaActionPerformed(evt);
-            }
-        });
-
         txt_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idActionPerformed(evt);
@@ -195,7 +185,7 @@ public class Proveedor extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(DatosLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(50, 50, 50)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel6)
@@ -203,24 +193,27 @@ public class Proveedor extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(DatosLayout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
-                        .addComponent(txt_mail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(DatosLayout.createSequentialGroup()
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(DatosLayout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3))
+                                .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(DatosLayout.createSequentialGroup()
+                                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(47, 47, 47))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(DatosLayout.createSequentialGroup()
+                        .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_mail, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(DatosLayout.createSequentialGroup()
                                 .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(201, 201, 201)))
+                        .addGap(101, 101, 101))))
         );
         DatosLayout.setVerticalGroup(
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,11 +222,8 @@ public class Proveedor extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txt_id, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                        .addComponent(txt_fecha)))
+                    .addComponent(txt_id, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
@@ -268,12 +258,14 @@ public class Proveedor extends javax.swing.JInternalFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -286,10 +278,6 @@ public class Proveedor extends javax.swing.JInternalFrame {
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
-
-    private void txt_fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_fechaActionPerformed
 
     private void txt_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idActionPerformed
         // TODO add your handling code here:
@@ -310,22 +298,21 @@ public class Proveedor extends javax.swing.JInternalFrame {
         String direccion = txt_direccion.getText();
         String telefono = txt_telefono.getText();
         String mail = txt_mail.getText();
-        String fecha = txt_fecha.getText();
 
         //Validar que los campos no esten vacios si estan vacios pon los camposRojos
-        if (nombre.equals("") || direccion.equals("") || telefono.equals("") || mail.equals("") || fecha.equals("")) {
-            camposRojos(nombre, direccion, telefono, mail, fecha);
+        if (nombre.equals("") || direccion.equals("") || telefono.equals("") || mail.equals("") ){
+            camposRojos(nombre, direccion, telefono, mail);
         } else {
            camposBlancos();
+           //"INSERT INTO PROVEEDORES (razon_social, direccion, fecha_registro, correo_electronico, telefono, estado_proveedor) V
            String json = "{" +
                             "\"nombre\": \"" + nombre + "\"," +
                             "\"direccion\": \"" + direccion + "\"," +
-                            "\"telefono\": \"" + telefono + "\"," +
                             "\"email\": \"" + mail + "\"," +
-                            "\"fecha\": \"" + fecha + "\"" +
+                            "\"telefono\": \"" + telefono + "\"" +
                         "}";
 
-            String ruta = "/insertar_cliente";
+            String ruta = "/insertar_proveedor";
             Api a = new Api();
             a.insertar(json, ruta);
            
@@ -333,7 +320,7 @@ public class Proveedor extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void camposRojos(String nombre, String direccion, String telefono, String mail, String fecha ){
+    private void camposRojos(String nombre, String direccion, String telefono, String mail ){
         
         if (nombre.equals("")) {
             txt_nombre.setBackground(Color.red);
@@ -356,24 +343,12 @@ public class Proveedor extends javax.swing.JInternalFrame {
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        Api a = new Api();
-        String ruta = "/obtener_proveedores";
-        String datos = a.obtener(ruta);
-
-        List<String> Proveedores = biblio_funciones.tratarRequest(datos);
-        biblio_funciones.mensaje("Se encontraron "+Proveedores.size()+" Proveedores.", "Actualizar", 1);
-
-        jComboBox1.removeAllItems();
-        for (String proveedor : Proveedores) {
-            jComboBox1.addItem(proveedor);
-        }
+        actualizar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // // TODO add your handling code here:
-
-        String proveedor = jComboBox1.getSelectedItem().toString();
+         String proveedor = jComboBox1.getSelectedItem().toString();
         String id = proveedor.split("_")[0];
         //obtener los datos del cliente con la api
         Api a = new Api();
@@ -386,10 +361,26 @@ public class Proveedor extends javax.swing.JInternalFrame {
         txt_mail.setText(datos_separados[4]);
         txt_nombre.setText(datos_separados[1]);
         txt_direccion.setText(datos_separados[2]);
-        txt_telefono.setText(datos_separados[3]);
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        txt_telefono.setText(datos_separados[3                             ]);
 
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+   
+    private void actualizar(){
+        
+         // TODO add your handling code here:
+        Api a = new Api();
+        String ruta = "/obtener_proveedores";
+        String datos = a.obtener(ruta);
+
+        List<String> Proveedores = biblio_funciones.tratarRequest(datos);
+        biblio_funciones.mensaje("Se encontraron "+Proveedores.size()+" Proveedores.", "Actualizar", 1);
+
+        jComboBox1.removeAllItems();
+        for (String proveedor : Proveedores) {
+            jComboBox1.addItem(proveedor);
+        }
+        
+    }
     private void txt_mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_mailActionPerformed
@@ -401,11 +392,10 @@ public class Proveedor extends javax.swing.JInternalFrame {
         String direccion = txt_direccion.getText();
         String telefono = txt_telefono.getText();
         String mail = txt_mail.getText();
-        String fecha = txt_fecha.getText();
 
         //Validar que los campos no esten vacios si estan vacios pon los camposRojos
-        if (id.equals("") || nombre.equals("") || direccion.equals("") || telefono.equals("") || mail.equals("") || fecha.equals("")) {
-            camposRojos(nombre, direccion, telefono, mail, fecha);
+        if (id.equals("") || nombre.equals("") || direccion.equals("") || telefono.equals("") || mail.equals("") ) {
+            camposRojos(nombre, direccion, telefono, mail);
         } else {
            camposBlancos();
            String json = "{" +
@@ -413,8 +403,7 @@ public class Proveedor extends javax.swing.JInternalFrame {
                             "\"nombre\": \"" + nombre + "\"," +
                             "\"direccion\": \"" + direccion + "\"," +
                             "\"telefono\": \"" + telefono + "\"," +
-                            "\"email\": \"" + mail + "\"," +
-                            "\"fecha\": \"" + fecha + "\"" +
+                            "\"email\": \"" + mail + "\""+
                         "}";
 
             String ruta = "/modificar_proveedor";
@@ -437,12 +426,10 @@ public class Proveedor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_direccion;
-    private javax.swing.JFormattedTextField txt_fecha;
     private javax.swing.JTextField txt_id;
     private javax.swing.JTextField txt_mail;
     private javax.swing.JTextField txt_nombre;

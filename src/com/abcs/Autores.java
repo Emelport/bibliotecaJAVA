@@ -232,6 +232,7 @@ public class Autores extends javax.swing.JInternalFrame {
         a.modificar(json, ruta);
         
         actualizar();
+
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
