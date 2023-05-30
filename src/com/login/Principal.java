@@ -4,24 +4,16 @@
  */
 package com.login;
 
-import Reportes.rentasDataSource;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import com.abcs.*;
 import com.capturas.*;
-import com.funciones.Api;
-import com.consultas.*;
+import com.consultas.Consultas;
 import static java.lang.System.exit;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.WindowConstants;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.view.JasperViewer;
+
 //importar jasper report
 
 
@@ -71,7 +63,6 @@ public class Principal extends javax.swing.JFrame {
         Compras = new javax.swing.JMenuItem();
         Consultas = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        Consulta4 = new javax.swing.JMenuItem();
         Salir = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenuItem();
         SalirF = new javax.swing.JMenuItem();
@@ -228,14 +219,6 @@ public class Principal extends javax.swing.JFrame {
         });
         Consultas.add(jMenuItem1);
 
-        Consulta4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Consulta4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta4ActionPerformed(evt);
-            }
-        });
-        Consultas.add(Consulta4);
-
         jMenuBar1.add(Consultas);
 
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/imgs/salida.png"))); // NOI18N
@@ -294,7 +277,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentasActionPerformed
         //Abrrir el formulario de ventas
-     
         Ventas v = new Ventas();
         jDesktopPane1.add(v);
         v.setVisible(true);
@@ -308,7 +290,6 @@ public class Principal extends javax.swing.JFrame {
         v.setResizable(false);
         v.setLocation(100, 0);
         v.show();
-        
 
     }//GEN-LAST:event_VentasActionPerformed
 
@@ -380,12 +361,6 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirFActionPerformed
 
-    private void Consulta4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Consulta4ActionPerformed
-        // TODO add your handling code here:
-
-     
-    }//GEN-LAST:event_Consulta4ActionPerformed
-
     private void ConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultasActionPerformed
         // TODO add your handling code here:
     
@@ -394,7 +369,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         Consultas cons = new Consultas();
-        cons.show();       
+         inicializarFrame(cons);       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void ProveedoresActionPerformed(java.awt.event.ActionEvent evt) {                                       
@@ -464,7 +439,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem CerrarSesion;
     private javax.swing.JMenuItem Clientes;
     private javax.swing.JMenuItem Compras;
-    private javax.swing.JMenuItem Consulta4;
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenuItem Libros;
     private javax.swing.JMenuItem Proveedores;

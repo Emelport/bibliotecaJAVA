@@ -15,19 +15,35 @@ public class rentasDataSource implements JRDataSource {
     private final Object [][] listadoRentas;
     private int index;
     Api a = new Api();
+    public String json="";
+  
     
     public rentasDataSource(){
-        index=-1;
-        String Datos = a.obtener("/obtener_rentas");
-        //Separar por filas
-        String [] filas = Datos.split("\\|");
-        //Separar por columnas
-        String [][] columnas = new String[filas.length][4];
-        for(int i=0;i<filas.length;i++){
-            columnas[i]=filas[i].split("__");
-        }
-        listadoRentas = columnas;
 
+        //Inicializar el arreglo vacio
+        listadoRentas = new String[0][0];
+    }
+    
+    public rentasDataSource(String fecha_ini,String fecha_final){
+       
+       String ruta = "/obtener_reservaciones/" + fecha_ini + "/" + fecha_final;
+       index = -1;
+       String datos = a.obtener(ruta);
+
+       // Separar los datos por filas
+       String[] filas = datos.split("\\|");
+       // Crear matriz para almacenar los valores de los campos
+       String[][] columnas = new String[filas.length][];
+
+       // Recorrer las filas y separar los campos
+       for (int i = 0; i < filas.length; i++) {
+           String fila = filas[i];
+           // Separar los campos individuales
+           String[] campos = fila.split("--");
+           columnas[i] = campos;
+        }
+    
+        listadoRentas = columnas;
     }
     
     @Override
@@ -50,6 +66,10 @@ public class rentasDataSource implements JRDataSource {
         return value;
     }
     
+    public static JRDataSource getDataSource(String fecha_ini,String fecha_final){
+        return new rentasDataSource(fecha_ini,fecha_final);
+    }
+      
     public static JRDataSource getDataSource(){
         return new rentasDataSource();
     }
