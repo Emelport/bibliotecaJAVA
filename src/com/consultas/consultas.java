@@ -5,6 +5,9 @@
 package com.consultas;
 
 import Reportes.rentasDataSource;
+import net.sf.jasperreports.view.JasperViewer;
+import java.sql.DriverManager;
+
 import com.funciones.Api;
 import com.login.biblio_funciones;
 import com.toedter.calendar.JDateChooser;
@@ -31,12 +34,18 @@ import javax.swing.WindowConstants;
 import com.linuxense.javadbf.DBFDataType;
 import com.linuxense.javadbf.DBFField;
 import com.linuxense.javadbf.DBFWriter;
+import com.mysql.jdbc.Connection;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.charset.Charset;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 
 
@@ -91,76 +100,47 @@ public class Consultas extends javax.swing.JInternalFrame {
 
     private void consultar() {
         Api a = new Api();
+        String reporte_path="";
         biblio_funciones.mensaje("Entra", "Prueba", 1);
+        Connection con = null;
         // Crear un objeto DBFWriter
         switch(jComboBox1.getSelectedIndex()){
             case 0 -> {
-                
-                //Sacar datos de los jDateChooser en formato yyyy-mm-dd
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                String fechaini = formatter.format(fecha_inicio.getValue()); 
-                String fechafin = formatter.format(fecha_fin.getValue());
-//              
-                String ruta = "/obtener_reservaciones/" + fechaini + "/" + fechafin;
-                //String datos = a.obtener(ruta);
-                //List<String> filas = biblio_funciones.tratarRequest(datos);
-                //DATOS DE PRUEBA 1--proveedor23--mi calle2 mi direccion2 mi codigo postal2--2023-04-11--proveedor2@outlook.com--2023-04-11
-                List<String> filas = new ArrayList<>();
-                filas.add(" 1--Elias Melendez Portillo--El laberinto--20");
-                
-                DBFField campos[] = new DBFField[4];
-                campos[0] = new DBFField();
-                campos[0].setName("ID");
-                campos[0].setType(DBFDataType.CHARACTER);
-                campos[0].setLength(10);
-                
-                campos[1] = new DBFField();
-                campos[1].setName("CLIENTE");
-                campos[1].setType(DBFDataType.CHARACTER);
-                campos[1].setLength(10);
-                
-                campos[2] = new DBFField();
-                campos[2].setName("LIBRO");
-                campos[2].setType(DBFDataType.CHARACTER);
-                campos[2].setLength(10);
-                
-                campos[3] = new DBFField();
-                campos[3].setName("TOTAL");
-                campos[3].setType(DBFDataType.CHARACTER);
-                campos[3].setLength(10);
-                
-                //Si no existe el archivo lo crea
-                String path = "src/Reportes/rep_cr.dbf"; // Crear lista para almacenar los objetos de datos
-                File file = new File(path);
-                DBFWriter writer = new DBFWriter(file);
-                writer.setFields(campos);
-                
-                for (String fila : filas) {
-                    String[] datos_fila = fila.split("--");
-                    Object rowData[] = new Object[3];
-                    for (int i = 0; i < datos_fila.length; i++) {
-                        rowData[i] = datos_fila[i];
-                    }
-                    writer.addRecord(rowData);
-                    biblio_funciones.mensaje(Arrays.toString(rowData), "Prueba", 1);
-                }
-                writer.close();
-              
+                reporte_path="src\\Reportes\\ventas1.jasper";
             }
 
             case 1 -> {
-                //Sacar datos de los jDateChooser en formato yyyy-mm-dd
-                Format formatter = new java.text.SimpleDateFormat("yyyy-MM-dd");
-                String fecha_inicio = formatter.format(compras_por_periodo.getComponent(1));
-                String fecha_fin = formatter.format(compras_por_periodo.getComponent(3));
-              
+                reporte_path="src\\Reportes\\Compras.jasper";
             }
             case 2 -> {
-                //Sacar datos de los jDateChooser en formato yyyy-mm-dd
-                String nombre = ((JTextField)localizar_libro.getComponent(1)).getText();
-                
+                reporte_path="src\\Reportes\\ventas1.jasper";
             }
         }
+        //CONEXION A LA BASE DE DATOS
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String cadena_conexion = "jdbc:mysql://localhost:3306/biblioteca?useSSL=false";
+            String user="root";
+            String password="osman"; 
+            con = (Connection) DriverManager.getConnection(cadena_conexion,user,password);
+           }catch(ClassNotFoundException e){
+                  biblio_funciones.mensaje("Error al cargar el driver, Favor de Informar a Sistemas", "Error", 0);
+
+           }catch(SQLException e){
+                    biblio_funciones.mensaje("Error en la base de datos, Favor de Informar a Sistemas", "Error", 0);
+            }
+        // CREACION DEL JASPER REPORT
+        try{
+            JasperReport reporte = (JasperReport) JRLoader.loadObjectFromFile(reporte_path);
+            JasperPrint jprin = JasperFillManager.fillReport(reporte, null, con);
+            JasperViewer jv = new JasperViewer(jprin,false);
+            jv.setVisible(true);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setAlwaysOnTop(true);
+        }catch(JRException e){
+            biblio_funciones.mensaje("Error al cargar el reporte, Favor de Informar a Sistemas", "Error", 0);
+        }
+
     }
     
     /**
