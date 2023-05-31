@@ -43,7 +43,7 @@ public class Ventas extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
 
-        //cargarCombos();
+        cargarCombos();
     }
     
     public void cargarCombos(){
@@ -385,6 +385,8 @@ public class Ventas extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        id_cliente=jComboBox1.getSelectedItem().toString();
+        id_cliente=id_cliente.split("_")[0];
         Api a = new Api();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         String fecha_prestamo= formato.format(txt_fecha.getValue());
@@ -403,7 +405,7 @@ public class Ventas extends javax.swing.JInternalFrame {
        
         String fecha_devolucion= formato.format(c.getTime());
         
-        String ruta= "/registrar_reservacion ";
+        String ruta= "registrar_reservacion";
         String json= "{"+
                 "\"id_libro\":\""+id_libro+"\","+
                 "\"id_cliente\":\""+id_cliente+"\","+

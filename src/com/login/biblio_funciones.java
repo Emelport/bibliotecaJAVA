@@ -42,24 +42,8 @@ import net.sourceforge.jbarcodebean.model.Interleaved25;
  */
 public class biblio_funciones {
     
-    //encriptar contraseña con MD5
-    public static String encriptar(String password){
-        String passwordEncriptado = null;
-        try {
-            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
-            byte[] array = md.digest(password.getBytes());
-            StringBuffer sb = new StringBuffer();
-            for (int i = 0; i < array.length; ++i) {
-                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-            }
-            passwordEncriptado = sb.toString();
-        } catch (java.security.NoSuchAlgorithmException e) {
-        }
-        return passwordEncriptado;
-    }
 
-    public static String crearXML(String datos){
-
+    public static String crearXML(String datos){  
         List<String> lista = tratarRequest(datos);
         //Crear un xml con los datos
         String xml = """
@@ -139,20 +123,6 @@ public class biblio_funciones {
         //mostrar la lista en un dialog
         return lista;
     
-    }
-    
-    public static ImageIcon generarCodigoBarras(String palabra){
-        //generar codigo de barras
-       JBarcodeBean barcode = new JBarcodeBean();
-       
-        barcode.setCodeType(new Interleaved25());
-        barcode.setCode(palabra);
-        barcode.setCheckDigit(true);
-
-        //generar imagen
-        java.awt.Image img = barcode.draw(new java.awt.image.BufferedImage(300, 300, java.awt.image.BufferedImage.TYPE_INT_RGB));
-        ImageIcon icon = new ImageIcon(img);
-        return icon;
     }
     
     public static void GuardarCB(ImageIcon Barras){

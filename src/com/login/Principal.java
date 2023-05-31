@@ -57,7 +57,6 @@ public class Principal extends javax.swing.JFrame {
         Clientes = new javax.swing.JMenuItem();
         Libros = new javax.swing.JMenuItem();
         Proveedores = new javax.swing.JMenuItem();
-        Tarjetas = new javax.swing.JMenuItem();
         Capturas = new javax.swing.JMenu();
         Ventas = new javax.swing.JMenuItem();
         Compras = new javax.swing.JMenuItem();
@@ -152,16 +151,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         Abcs.add(Proveedores);
-
-        Tarjetas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        Tarjetas.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Tarjetas.setText("Tarjetas");
-        Tarjetas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TarjetasActionPerformed(evt);
-            }
-        });
-        Abcs.add(Tarjetas);
 
         jMenuBar1.add(Abcs);
 
@@ -327,12 +316,6 @@ public class Principal extends javax.swing.JFrame {
         inicializarFrame(v);
     }//GEN-LAST:event_LibrosActionPerformed
 
-    private void TarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TarjetasActionPerformed
-        // TODO add your handling code here:
-        Tarjetas v = new Tarjetas();
-        inicializarFrame(v);
-    }//GEN-LAST:event_TarjetasActionPerformed
-
     private void jLabel10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel10KeyPressed
         // TODO add your handling code here:
 
@@ -444,7 +427,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Proveedores;
     private javax.swing.JMenu Salir;
     private javax.swing.JMenuItem SalirF;
-    private javax.swing.JMenuItem Tarjetas;
     private javax.swing.JMenuItem Ventas;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel10;

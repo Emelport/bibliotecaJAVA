@@ -46,7 +46,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="470" height="-1"/>
+              <AbsoluteConstraints x="0" y="0" width="520" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -116,10 +116,12 @@
             <Component class="javax.swing.JComboBox" name="jComboBox1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="5">
                     <StringItem index="0" value="Ventas/Rentas en un periodo."/>
                     <StringItem index="1" value="Compras en un periodo."/>
-                    <StringItem index="2" value="Localizar Libro."/>
+                    <StringItem index="2" value="Localizacion Libros"/>
+                    <StringItem index="3" value="Autores"/>
+                    <StringItem index="4" value="Proveedores"/>
                   </StringArray>
                 </Property>
               </Properties>

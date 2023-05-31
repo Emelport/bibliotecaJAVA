@@ -43,7 +43,7 @@ public class Compras_2 extends javax.swing.JInternalFrame {
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
 
-       // cargarCombos();
+       cargarCombos();
     }
     
     public void cargarCombos(){
@@ -405,10 +405,10 @@ public class Compras_2 extends javax.swing.JInternalFrame {
         
         //Sacar el id del proveedor
         String proveedor= jComboBox1.getSelectedItem().toString();
-        String id_proveedor=proveedor.substring(0, proveedor.indexOf("-"));
+        String id_proveedor=proveedor.substring(0, proveedor.indexOf("_"));
 
 
-        String ruta= "/insertar_maestro_compras ";
+        String ruta= "/insertar_maestro_compras";
         String json= "{"+
         "\"fecha_compra\":\""+fecha+"\","+
         "\"id_proveedor\":\""+id_proveedor+"\","+
